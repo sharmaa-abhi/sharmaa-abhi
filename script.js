@@ -1,101 +1,31 @@
 /**
  * GitSkins Terminal Banner Component - Vanilla JS Engine
- * Exact match for GitSkins text letter wordmark font (S, :, +, -, ', `)
+ * Exact GitSkins wordmark font for full name: ABHISHEK SHARMA
  */
 
-const BANNER_VARIANTS = {
-  // Exact GitSkins text letter wordmark font style from user screenshot
-  wordmark: [
-    "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS ",
-    "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`",
-    "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++- ",
-    ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`    ",
-    ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`       ",
-    ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-       ",
-    ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS        ",
-    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`       ",
-    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``    ",
-    ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  ",
-    ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` "
-  ],
-  wordmarkFull: [
-    "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS ",
-    "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`",
-    "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++- ",
-    ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`    ",
-    ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`       ",
-    ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-       ",
-    ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS        ",
-    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`       ",
-    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``    ",
-    ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  ",
-    ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` ",
-    "                                                                                                                                             ",
-    " SSSSSSSSSSSSS   SSS         SS        SSSSSSSS   SSSSSSSSSSSS    SSS   SSSS   SS        SSSSSSSS  ",
-    " :+++++++++++`   ::`         :-`     :+++++++`    :SS++++++++`    ::`   :SS:   :-`     :+++++++`   ",
-    "-S`++++++++++-   ::`         :-`  --`-+++++++--S` :S`++++++++--S` ::`  :S`:S`  :-`  --`-+++++++--S`",
-    ":S`              ::``SSSSSSS:-`   :-``        :S` :S`SSSSSSSS:+`  ::` :S`  :S` :-`  :-``        :S`",
-    ":+`              ::SS++++++++S`   :-`         :S` :SS++++++++S`   ::`:S`    :S`:-`  :-`         :S`",
-    "++-:SSSSSSS`     ::`+++++++++-:`  :-`SSSSSSSS:S`  :S`++++++++-:S` ::SS`     :SS-`   :-`SSSSSSSS:S` ",
-    "  :+++++++`SSS   ::`         :-`  :-`+++++++++:S` :S`  S:+`       ::`        ::-`   :-`+++++++++:S`",
-    "          :S`    ::`         :-`  :-`         :S` :S`   ++-:``    ::`        ::-`   :-`         :S`",
-    "          :S`    ::`         :-`  :-`         :S` :S`     +:+'SS  ::`        ::-`   :-`         :S`",
-    "SSSSSSSSSS:S`    ::`         :-`  :-`         :S` :S`        +:+` ::`        ::-`   :-`         :S`",
-    ":+++++++++++`    :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`"
-  ],
-  block: [
-    " █████╗ ██████╗ ██╗  ██╗██╗███████╗██╗  ██╗███████╗██╗  ██╗   ███████╗██╗  ██╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ",
-    "██╔══██╗██╔══██╗██║  ██║██║██╔════╝██║  ██║██╔════╝██║ ██╔╝   ██╔════╝██║  ██║██╔══██╗██╔══██╗████╗ ████║██╔══██╗",
-    "███████║██████╔╝███████║██║███████╗███████║█████╗  █████═╝    ███████╗███████║███████║██████╔╝██╔████╔██║███████║",
-    "██╔══██║██╔══██╗██╔══██║██║╚════██║██╔══██║██╔══╝  ██╔═██╗    ╚════██║██╔══██║██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║",
-    "██║  ██║██████╔╝██║  ██║██║███████║██║  ██║███████╗██║  ██╗   ███████║██║  ██║██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║",
-    "╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝"
-  ]
-};
+const ABHISHEK_SHARMA_WORDMARK = [
+  "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS        SSSSSSSSSSSSSS   SSS         SS        SSSSSSSS       SSSSSSSSSSSS    SSS   SSSS   SS        SSSSSSSS  ",
+  "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`       :+++++++++++`    ::`         :-`     :+++++++`        :SS++++++++`    ::`   :SS:   :-`     :+++++++`   ",
+  "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++-       -S`++++++++++-    ::`         :-`  --`-+++++++--S` :S`++++++++--S` ::`  :S`:S`  :-`  --`-+++++++--S`",
+  ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`      :S`               ::``SSSSSSS:-`   :-``        :S` :S`SSSSSSSS:+`  ::` :S`  :S` :-`  :-``        :S`",
+  ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`         :+`               ::SS++++++++S`   :-`         :S` :SS++++++++S`   ::`:S`    :S`:-`  :-`         :S`",
+  ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-         ++-:SSSSSSS`      ::`+++++++++-:`  :-`SSSSSSSS:S`  :S`++++++++-:S` ::SS`     :SS-`   :-`SSSSSSSS:S`",
+  ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS            :+++++++`SSS    ::`         :-`  :-`+++++++++:S` :S`  S:+`       ::`        ::-`   :-`+++++++++:S`",
+  ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`                   :S`     ::`         :-`  :-`         :S` :S`   ++-:``    ::`        ::-`   :-`         :S`",
+  ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``            :S`     ::`         :-`  :-`         :S` :S`     +:+'SS  ::`        ::-`   :-`         :S`",
+  ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  SSSSSSSSSS:S`     ::`         :-`  :-`         :S` :S`        +:+` ::`        ::-`   :-`         :S`",
+  ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` :+++++++++++`     :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`"
+];
 
 class TerminalEngine {
   constructor() {
     this.bannerElem = document.getElementById("ascii-banner");
-    this.promptCmdElem = document.getElementById("prompt-cmd-text");
-    this.headerTitleElem = document.getElementById("header-title-text");
-    this.replayBtn = document.getElementById("btn-replay");
-    this.copyBtn = document.getElementById("btn-copy");
-    this.variantSelect = document.getElementById("variant-select");
-    
-    this.currentVariant = "wordmark";
     this.animationTimer = null;
-    
     this.init();
   }
 
   init() {
     this.playAnimation();
-
-    if (this.replayBtn) {
-      this.replayBtn.addEventListener("click", () => this.playAnimation());
-    }
-
-    if (this.variantSelect) {
-      this.variantSelect.addEventListener("change", (e) => {
-        this.currentVariant = e.target.value;
-        this.updatePrompt();
-        this.playAnimation();
-      });
-    }
-
-    if (this.copyBtn) {
-      this.copyBtn.addEventListener("click", () => this.copySvgToClipboard());
-    }
-  }
-
-  updatePrompt() {
-    if (this.currentVariant.startsWith("wordmark")) {
-      if (this.promptCmdElem) this.promptCmdElem.textContent = "./wordmark.sh --name";
-      if (this.headerTitleElem) this.headerTitleElem.textContent = "./wordmark.sh --name";
-    } else {
-      if (this.promptCmdElem) this.promptCmdElem.textContent = "./whoami";
-      if (this.headerTitleElem) this.headerTitleElem.textContent = "./whoami";
-    }
   }
 
   playAnimation() {
@@ -103,16 +33,13 @@ class TerminalEngine {
       clearInterval(this.animationTimer);
     }
 
-    const lines = BANNER_VARIANTS[this.currentVariant] || BANNER_VARIANTS.wordmark;
+    const lines = ABHISHEK_SHARMA_WORDMARK;
     const maxCols = Math.max(...lines.map(l => l.length));
     
     let currentCol = 0;
-    
-    // Clear display
     this.renderColumns(lines, 0);
 
-    // Progressive typewriter column reveal left-to-right over ~2.2s
-    const totalDuration = 2200;
+    const totalDuration = 2400; // 2.4 seconds reveal
     const intervalTime = Math.max(8, Math.floor(totalDuration / maxCols));
 
     this.animationTimer = setInterval(() => {
@@ -128,10 +55,7 @@ class TerminalEngine {
   }
 
   renderColumns(lines, revealedCols) {
-    const renderedLines = lines.map(line => {
-      return line.slice(0, revealedCols);
-    });
-
+    const renderedLines = lines.map(line => line.slice(0, revealedCols));
     this.bannerElem.textContent = renderedLines.join("\n");
   }
 
@@ -145,22 +69,6 @@ class TerminalEngine {
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
-  }
-
-  async copySvgToClipboard() {
-    try {
-      const response = await fetch("terminal.svg");
-      const svgText = await response.text();
-      await navigator.clipboard.writeText(svgText);
-      
-      const origText = this.copyBtn.innerHTML;
-      this.copyBtn.innerHTML = `<span>✓ Copied SVG!</span>`;
-      setTimeout(() => {
-        this.copyBtn.innerHTML = origText;
-      }, 2000);
-    } catch (err) {
-      console.error("Failed to copy SVG:", err);
-    }
   }
 }
 

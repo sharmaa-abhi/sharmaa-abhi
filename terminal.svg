@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 310" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 310" width="100%" height="100%">
   <defs>
     <!-- Fonts & Keyframe Animations -->
     <style>
@@ -28,7 +28,7 @@
 
       .ascii-text {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 7.2px;
+        font-size: 7px;
         font-weight: 700;
         letter-spacing: -0.2px;
         white-space: pre;
@@ -38,18 +38,18 @@
 
       /* Left-to-right typing reveal animation */
       .typing-mask {
-        animation: type-reveal 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: type-reveal 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
       @keyframes type-reveal {
         0% { width: 0px; }
-        100% { width: 950px; }
+        100% { width: 1300px; }
       }
 
       /* Cursor Animation */
       .cursor {
         fill: #3fb950;
-        animation: cursor-blink 0.9s step-end infinite, cursor-move 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: cursor-blink 0.9s step-end infinite, cursor-move 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         filter: drop-shadow(0 0 6px #3fb950);
       }
 
@@ -60,7 +60,7 @@
 
       @keyframes cursor-move {
         0% { x: 26px; }
-        100% { x: 945px; }
+        100% { x: 1290px; }
       }
 
       .scanline-overlay {
@@ -95,17 +95,17 @@
   </defs>
 
   <!-- Outer Window Background & Border -->
-  <rect class="bg" x="1" y="1" width="998" height="308" />
+  <rect class="bg" x="1" y="1" width="1348" height="308" />
 
   <!-- Soft Ambient Glow -->
-  <rect class="ambient-glow" x="100" y="50" width="800" height="200" />
+  <rect class="ambient-glow" x="100" y="50" width="1150" height="200" />
 
   <!-- CRT Scanlines -->
-  <rect class="scanline-overlay" x="2" y="2" width="996" height="306" rx="15" />
+  <rect class="scanline-overlay" x="2" y="2" width="1346" height="306" rx="15" />
 
   <!-- Top Bar -->
-  <path class="header-bg" d="M 1,17 C 1,8 8,1 17,1 L 983,1 C 992,1 999,8 999,17 L 999,42 L 1,42 Z" />
-  <line class="header-border" x1="1" y1="42" x2="999" y2="42" />
+  <path class="header-bg" d="M 1,17 C 1,8 8,1 17,1 L 1333,1 C 1342,1 1349,8 1349,17 L 1349,42 L 1,42 Z" />
+  <line class="header-border" x1="1" y1="42" x2="1349" y2="42" />
 
   <!-- Window Dots -->
   <circle cx="24" cy="21" r="6" fill="#ff5f56" />
@@ -113,7 +113,7 @@
   <circle cx="64" cy="21" r="6" fill="#27c93f" />
 
   <!-- Header Title -->
-  <text class="title" x="500" y="26">
+  <text class="title" x="675" y="26">
     <tspan class="user">sharmaa-abhi@github</tspan>: ~$ <tspan class="cmd">./wordmark.sh --name</tspan>
   </text>
 
@@ -125,19 +125,19 @@
 
   <!-- ASCII Banner Content with Typewriter Mask -->
   <g clip-path="url(#typing-clip)">
-    <text class="ascii-text" x="26" y="98">      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS </text>
-    <text class="ascii-text" x="26" y="112">    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`</text>
-    <text class="ascii-text" x="26" y="126">--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++- </text>
-    <text class="ascii-text" x="26" y="140">:-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`    </text>
-    <text class="ascii-text" x="26" y="154">:-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`       </text>
-    <text class="ascii-text" x="26" y="168">:-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-       </text>
-    <text class="ascii-text" x="26" y="182">:-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS        </text>
-    <text class="ascii-text" x="26" y="196">:-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`       </text>
-    <text class="ascii-text" x="26" y="210">:-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``    </text>
-    <text class="ascii-text" x="26" y="224">:-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  </text>
-    <text class="ascii-text" x="26" y="238">:+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` </text>
+    <text class="ascii-text" x="26" y="98">      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS        SSSSSSSSSSSSSS   SSS         SS        SSSSSSSS       SSSSSSSSSSSS    SSS   SSSS   SS        SSSSSSSS  </text>
+    <text class="ascii-text" x="26" y="112">    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`       :+++++++++++`    ::`         :-`     :+++++++`        :SS++++++++`    ::`   :SS:   :-`     :+++++++`   </text>
+    <text class="ascii-text" x="26" y="126">--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++-       -S`++++++++++-    ::`         :-`  --`-+++++++--S` :S`++++++++--S` ::`  :S`:S`  :-`  --`-+++++++--S`</text>
+    <text class="ascii-text" x="26" y="140">:-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`      :S`               ::``SSSSSSS:-`   :-``        :S` :S`SSSSSSSS:+`  ::` :S`  :S` :-`  :-``        :S`</text>
+    <text class="ascii-text" x="26" y="154">:-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`         :+`               ::SS++++++++S`   :-`         :S` :SS++++++++S`   ::`:S`    :S`:-`  :-`         :S`</text>
+    <text class="ascii-text" x="26" y="168">:-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-         ++-:SSSSSSS`      ::`+++++++++-:`  :-`SSSSSSSS:S`  :S`++++++++-:S` ::SS`     :SS-`   :-`SSSSSSSS:S`</text>
+    <text class="ascii-text" x="26" y="182">:-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS            :+++++++`SSS    ::`         :-`  :-`+++++++++:S` :S`  S:+`       ::`        ::-`   :-`+++++++++:S`</text>
+    <text class="ascii-text" x="26" y="196">:-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`                   :S`     ::`         :-`  :-`         :S` :S`   ++-:``    ::`        ::-`   :-`         :S`</text>
+    <text class="ascii-text" x="26" y="210">:-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``            :S`     ::`         :-`  :-`         :S` :S`     +:+'SS  ::`        ::-`   :-`         :S`</text>
+    <text class="ascii-text" x="26" y="224">:-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  SSSSSSSSSS:S`     ::`         :-`  :-`         :S` :S`        +:+` ::`        ::-`   :-`         :S`</text>
+    <text class="ascii-text" x="26" y="238">:+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` :+++++++++++`     :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`</text>
   </g>
 
   <!-- Animated Blinking Cursor at the end -->
-  <rect class="cursor" x="945" y="225" width="9" height="15" rx="1" />
+  <rect class="cursor" x="1290" y="225" width="9" height="15" rx="1" />
 </svg>
