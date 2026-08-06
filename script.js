@@ -1,9 +1,48 @@
 /**
  * GitSkins Terminal Banner Component - Vanilla JS Engine
- * Handles character-by-character & column typewriter animation, cursor blinking, and styling.
+ * Exact match for GitSkins text letter wordmark font (S, :, +, -, ', `)
  */
 
 const BANNER_VARIANTS = {
+  // Exact GitSkins text letter wordmark font style from user screenshot
+  wordmark: [
+    "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS ",
+    "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`",
+    "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++- ",
+    ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`    ",
+    ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`       ",
+    ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-       ",
+    ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS        ",
+    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`       ",
+    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``    ",
+    ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  ",
+    ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` "
+  ],
+  wordmarkFull: [
+    "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS ",
+    "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`",
+    "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++- ",
+    ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`    ",
+    ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`       ",
+    ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-       ",
+    ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS        ",
+    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`       ",
+    ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``    ",
+    ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS  ",
+    ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+` ",
+    "                                                                                                                                             ",
+    " SSSSSSSSSSSSS   SSS         SS        SSSSSSSS   SSSSSSSSSSSS    SSS   SSSS   SS        SSSSSSSS  ",
+    " :+++++++++++`   ::`         :-`     :+++++++`    :SS++++++++`    ::`   :SS:   :-`     :+++++++`   ",
+    "-S`++++++++++-   ::`         :-`  --`-+++++++--S` :S`++++++++--S` ::`  :S`:S`  :-`  --`-+++++++--S`",
+    ":S`              ::``SSSSSSS:-`   :-``        :S` :S`SSSSSSSS:+`  ::` :S`  :S` :-`  :-``        :S`",
+    ":+`              ::SS++++++++S`   :-`         :S` :SS++++++++S`   ::`:S`    :S`:-`  :-`         :S`",
+    "++-:SSSSSSS`     ::`+++++++++-:`  :-`SSSSSSSS:S`  :S`++++++++-:S` ::SS`     :SS-`   :-`SSSSSSSS:S` ",
+    "  :+++++++`SSS   ::`         :-`  :-`+++++++++:S` :S`  S:+`       ::`        ::-`   :-`+++++++++:S`",
+    "          :S`    ::`         :-`  :-`         :S` :S`   ++-:``    ::`        ::-`   :-`         :S`",
+    "          :S`    ::`         :-`  :-`         :S` :S`     +:+'SS  ::`        ::-`   :-`         :S`",
+    "SSSSSSSSSS:S`    ::`         :-`  :-`         :S` :S`        +:+` ::`        ::-`   :-`         :S`",
+    ":+++++++++++`    :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`"
+  ],
   block: [
     " █████╗ ██████╗ ██╗  ██╗██╗███████╗██╗  ██╗███████╗██╗  ██╗   ███████╗██╗  ██╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ",
     "██╔══██╗██╔══██╗██║  ██║██║██╔════╝██║  ██║██╔════╝██║ ██╔╝   ██╔════╝██║  ██║██╔══██╗██╔══██╗████╗ ████║██╔══██╗",
@@ -11,27 +50,20 @@ const BANNER_VARIANTS = {
     "██╔══██║██╔══██╗██╔══██║██║╚════██║██╔══██║██╔══╝  ██╔═██╗    ╚════██║██╔══██║██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║",
     "██║  ██║██████╔╝██║  ██║██║███████║██║  ██║███████╗██║  ██╗   ███████║██║  ██║██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║",
     "╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝"
-  ],
-  slant: [
-    "   ___    ____  ██╗  ██╗██╗███████╗██╗  ██╗███████╗██╗  ██╗   ███████╗██╗  ██╗  ___    ____  ███╗   ███╗  ___   ",
-    "  /   |  / __ )/ /  / // / / ____// /  / // ____// / / /    / ____// /  / //   |  / __  //   |  /   |  /   |  ",
-    " / /| | / __  / /__/ // / / /___ / /__/ // /___ / //_/     / /___ / /__/ // /| | / /_/ // /| | / /| | / /| |  ",
-    "/ ___ |/ /_/ / __  // / /____  // __  // ____// __  \\     /____  // __  // ___ |/ _, _// ___ |/ ___ |/ ___ |  ",
-    "/_/  |_/_____/_/  /_//_/ /______//_/  /_//_____//_/  \\_\\   /______//_/  /_//_/  |_/_/ |_|/_/  |_/_/  |_/_/  |_|  "
   ]
 };
 
 class TerminalEngine {
   constructor() {
     this.bannerElem = document.getElementById("ascii-banner");
-    this.promptElem = document.getElementById("prompt-command");
+    this.promptCmdElem = document.getElementById("prompt-cmd-text");
+    this.headerTitleElem = document.getElementById("header-title-text");
     this.replayBtn = document.getElementById("btn-replay");
     this.copyBtn = document.getElementById("btn-copy");
     this.variantSelect = document.getElementById("variant-select");
     
-    this.currentVariant = "block";
+    this.currentVariant = "wordmark";
     this.animationTimer = null;
-    this.typingSpeed = 25; // ms per column
     
     this.init();
   }
@@ -46,6 +78,7 @@ class TerminalEngine {
     if (this.variantSelect) {
       this.variantSelect.addEventListener("change", (e) => {
         this.currentVariant = e.target.value;
+        this.updatePrompt();
         this.playAnimation();
       });
     }
@@ -55,12 +88,22 @@ class TerminalEngine {
     }
   }
 
+  updatePrompt() {
+    if (this.currentVariant.startsWith("wordmark")) {
+      if (this.promptCmdElem) this.promptCmdElem.textContent = "./wordmark.sh --name";
+      if (this.headerTitleElem) this.headerTitleElem.textContent = "./wordmark.sh --name";
+    } else {
+      if (this.promptCmdElem) this.promptCmdElem.textContent = "./whoami";
+      if (this.headerTitleElem) this.headerTitleElem.textContent = "./whoami";
+    }
+  }
+
   playAnimation() {
     if (this.animationTimer) {
       clearInterval(this.animationTimer);
     }
 
-    const lines = BANNER_VARIANTS[this.currentVariant] || BANNER_VARIANTS.block;
+    const lines = BANNER_VARIANTS[this.currentVariant] || BANNER_VARIANTS.wordmark;
     const maxCols = Math.max(...lines.map(l => l.length));
     
     let currentCol = 0;
@@ -68,9 +111,9 @@ class TerminalEngine {
     // Clear display
     this.renderColumns(lines, 0);
 
-    // Typing reveal animation column by column left-to-right over ~2.5s
-    const totalDuration = 2500; // 2.5 seconds total
-    const intervalTime = Math.max(10, Math.floor(totalDuration / maxCols));
+    // Progressive typewriter column reveal left-to-right over ~2.2s
+    const totalDuration = 2200;
+    const intervalTime = Math.max(8, Math.floor(totalDuration / maxCols));
 
     this.animationTimer = setInterval(() => {
       currentCol++;
@@ -93,7 +136,6 @@ class TerminalEngine {
   }
 
   appendBlinkingCursor() {
-    // Add blinking block cursor at the end of the last line
     const currentText = this.bannerElem.textContent;
     this.bannerElem.innerHTML = this.escapeHtml(currentText) + '<span class="cursor"></span>';
   }

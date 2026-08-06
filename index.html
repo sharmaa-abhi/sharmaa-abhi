@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitSkins Terminal Banner - ABHISHEK SHARMA</title>
-  <meta name="description" content="Pixel-perfect clone of GitSkins terminal banner component with animated ASCII art for ABHISHEK SHARMA">
+  <title>GitSkins Wordmark Terminal - ABHISHEK SHARMA</title>
+  <meta name="description" content="Pixel-perfect clone of GitSkins wordmark terminal component with text letter ASCII art for ABHISHEK SHARMA">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
           <span class="dot dot-green" title="Expand"></span>
         </div>
         <div class="terminal-title">
-          <span class="username">sharmaa-abhi@github</span> ~ $ <span class="cmd">./whoami</span>
+          <span class="username">sharmaa-abhi@github</span>: ~$ <span class="cmd" id="header-title-text">./wordmark.sh --name</span>
         </div>
         <div class="header-right">
           <span class="status-badge">zsh</span>
@@ -38,14 +38,13 @@
         
         <!-- Command Prompt Line -->
         <div class="prompt-line">
-          <span class="prompt-path">sharmaa-abhi@github ~ $</span>
-          <span class="prompt-sym">❯</span>
-          <span class="prompt-command" id="prompt-command">./whoami</span>
+          <span class="prompt-path">sharmaa-abhi@github: ~$</span>
+          <span class="prompt-command" id="prompt-cmd-text">./wordmark.sh --name</span>
         </div>
 
         <!-- ASCII Banner Container -->
         <div class="ascii-wrapper">
-          <pre class="ascii-banner" id="ascii-banner" aria-label="ABHISHEK SHARMA ASCII Banner"></pre>
+          <pre class="ascii-banner" id="ascii-banner" aria-label="ABHISHEK SHARMA Text Letter Banner"></pre>
         </div>
 
       </div>
@@ -62,10 +61,11 @@
           Replay Typing
         </button>
 
-        <label for="variant-select" style="font-size: 0.8rem; color: var(--text-muted);">Style:</label>
+        <label for="variant-select" style="font-size: 0.8rem; color: var(--text-muted);">Font Style:</label>
         <select id="variant-select" class="style-selector">
-          <option value="block" selected>ANSI Block (GitSkins)</option>
-          <option value="slant">FIGlet Slant (# / \ | _ .)</option>
+          <option value="wordmark" selected>GitSkins Wordmark (S, :, +, -, ')</option>
+          <option value="wordmarkFull">GitSkins Full ABHISHEK + SHARMA</option>
+          <option value="block">ANSI Block Style</option>
         </select>
       </div>
 
