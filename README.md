@@ -33,3 +33,43 @@
 </div>
 
 <p align="center"><sub>Abhishek Sharma  · Profile generated with <a href="https://www.gitskins.com/readme-generator">GitSkins</a></sub></p>
+
+<hr>
+
+
+# Hi there, I'm <Your Name> 👋
+
+<p align="center">
+  <!-- GitSkins Card Image -->
+  <img src="https://gitskins.com/api/embed/profile?username=<your-github-username>&theme=dark" alt="GitSkins Profile" width="100%"/>
+</p>
+
+### 🚀 About Me
+- 🔭 Working on **Web Architecture & Digital Platform Flows**
+- 💻 **Tech Stack:** JavaScript, React, Next.js, HTML, CSS, Node.js
+- 🛠️ **Tools & Platforms:** Vercel, Render, GitHub, Cursor AI
+- ⚡ **Focus:** Building in public, automating workflows, and frontend development
+
+---
+
+### 📊 GitHub Activity & Stats
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=<your-github-username>&show_icons=true&theme=dark" alt="GitHub Stats" width="48%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=<your-github-username>&layout=compact&theme=dark" alt="Top Languages" width="48%" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=<your-github-username>&theme=dark" alt="GitHub Streak" width="100%" />
+</p>
+
+---
+
+### 📫 Connect with Me
+<p align="left">
+  <a href="https://linkedin.com/in/<your-linkedin-username>" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="mailto:<your-email@example.com>">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
+  </a>
+</p>
