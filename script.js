@@ -1,7 +1,6 @@
 /**
- * GitSkins Terminal Banner Component - Interactive Animation Engine
- * Creates realistic terminal command typing + ASCII wordmark unrolling sequence
- * ABHISHEK SHARMA with 28-character space gap between names
+ * GitSkins Terminal Banner Component - Interactive Engine
+ * Animated spacing and pulsing energy beam between ABHISHEK and SHARMA
  */
 
 const ABHISHEK_LINES = [
@@ -32,9 +31,23 @@ const SHARMA_LINES = [
   ":+++++++++++`     :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`"
 ];
 
-// 28 spaces gap between ABHISHEK and SHARMA for visual distinction
-const WORDMARK_GAP = " ".repeat(28);
-const FULL_WORDMARK = ABHISHEK_LINES.map((line, i) => line + WORDMARK_GAP + SHARMA_LINES[i]);
+// Animated Middle Column elements between ABHISHEK & SHARMA
+const GAP_ICONS = [
+  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim">┆</span>',
+  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim">⚡</span>',
+  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim">┆</span>',
+  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim">⚡</span>',
+  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim">┆</span>',
+  '<span class="gap-anim-beam">│</span>'
+];
+
+const GAP_LEFT = " ".repeat(12);
+const GAP_RIGHT = " ".repeat(12);
 
 class TerminalEngine {
   constructor() {
@@ -95,11 +108,11 @@ class TerminalEngine {
     this.isAnimating = true;
     
     this.typedCmdElem.textContent = "";
-    this.bannerElem.textContent = "";
+    this.bannerElem.innerHTML = "";
     this.commandCursorElem.style.display = "inline-block";
     if (this.statusBadge) this.statusBadge.textContent = "zsh • running";
 
-    // Phase 1: Type Command Line
+    // Phase 1: Typewriter animation on `./wordmark.sh --name`
     let charIndex = 0;
     const fullCmd = this.commandToType;
 
@@ -111,27 +124,24 @@ class TerminalEngine {
         clearInterval(this.typeTimer);
         this.typeTimer = null;
         
-        // Brief pause after typing command, then reveal ASCII banner
         setTimeout(() => {
           this.revealAsciiBanner();
-        }, 180);
+        }, 160);
       }
-    }, 45); // typing speed per char
+    }, 40);
   }
 
   revealAsciiBanner() {
-    const lines = FULL_WORDMARK;
-    const maxCols = Math.max(...lines.map(l => l.length));
+    const totalCols = ABHISHEK_LINES[0].length;
     let currentCol = 0;
+    const maxCols = totalCols + GAP_LEFT.length + 1 + GAP_RIGHT.length + SHARMA_LINES[0].length;
 
-    const totalDuration = 1800; // 1.8s smooth unroll
-    const intervalTime = Math.max(8, Math.floor(totalDuration / maxCols));
+    const intervalTime = 12;
 
     this.asciiTimer = setInterval(() => {
-      currentCol += 2; // reveal 2 cols per tick for fast smooth animation
+      currentCol += 3; // reveal speed
       
-      const renderedLines = lines.map(line => line.slice(0, Math.min(currentCol, line.length)));
-      this.bannerElem.textContent = renderedLines.join("\n");
+      this.renderBannerAtCol(currentCol);
 
       if (currentCol >= maxCols) {
         clearInterval(this.asciiTimer);
@@ -141,13 +151,43 @@ class TerminalEngine {
     }, intervalTime);
   }
 
+  renderBannerAtCol(revealedCols) {
+    const linesHtml = [];
+
+    for (let i = 0; i < ABHISHEK_LINES.length; i++) {
+      const abhi = ABHISHEK_LINES[i];
+      const icon = GAP_ICONS[i];
+      const sharma = SHARMA_LINES[i];
+
+      let lineOutput = "";
+
+      if (revealedCols <= abhi.length) {
+        lineOutput = this.escapeHtml(abhi.slice(0, revealedCols));
+      } else if (revealedCols <= abhi.length + GAP_LEFT.length) {
+        const leftSpacesCount = revealedCols - abhi.length;
+        lineOutput = this.escapeHtml(abhi) + " ".repeat(leftSpacesCount);
+      } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1) {
+        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon;
+      } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length) {
+        const rightSpacesCount = revealedCols - (abhi.length + GAP_LEFT.length + 1);
+        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon + " ".repeat(rightSpacesCount);
+      } else {
+        const sharmaRevealed = revealedCols - (abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length);
+        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon + GAP_RIGHT + this.escapeHtml(sharma.slice(0, sharmaRevealed));
+      }
+
+      linesHtml.push(lineOutput);
+    }
+
+    this.bannerElem.innerHTML = linesHtml.join("\n");
+  }
+
   finishAnimation() {
     this.isAnimating = false;
     if (this.statusBadge) this.statusBadge.textContent = "zsh • done";
     
-    // Append terminal cursor at end of banner
-    const currentText = this.bannerElem.textContent;
-    this.bannerElem.innerHTML = this.escapeHtml(currentText) + '<span class="cursor"></span>';
+    // Append terminal cursor at end
+    this.bannerElem.innerHTML += '<span class="cursor"></span>';
   }
 
   escapeHtml(text) {
