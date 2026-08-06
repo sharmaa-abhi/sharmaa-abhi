@@ -1,53 +1,38 @@
 /**
  * GitSkins Terminal Banner Component - Interactive Engine
- * Animated spacing and pulsing energy beam between ABHISHEK and SHARMA
+ * Animated spacing and pulsing energy beam between ABHISHEK and SHARMAA
  */
 
 const ABHISHEK_LINES = [
-  "      SSSSSSSS       SSSSSSSSSSSS    SSS         SS  SSSSSSSSSSSSSSS   SSSSSSSSSSSSSS   SSS         SS  SSSSSSSSSSSSSSS  SSS         SSS",
-  "    :+++++++`        :SS++++++++`    ::`         :-` :+++++SSS+++++`   :+++++++++++`    ::`         :-` ::S+++++++++++`  :S`         -:+`",
-  "--`-+++++++--S`      :S`++++++++--S` ::`         :-` ++++++:S`+++++-  -S`++++++++++-    ::`         :-` ::`++++++++++-   :S`       --++-",
-  ":-``        :S`      :S`SSSSSSSS:+`  ::``SSSSSSS:-`        :S`        :S`               ::``SSSSSSS:-`  ::`SSSSSSS       :S`   SS+:+`",
-  ":-`         :S`      :SS++++++++S`   ::SS++++++++S`        :S`        :+`               ::SS++++++++S`  ::S+++++++`      :S`   :+`",
-  ":-`SSSSSSSS:S`       :S`++++++++-:S` ::`+++++++++-:`       :S`        ++-:SSSSSSS`      ::`+++++++++-:` ::`++++++++-     :S`SS`++-",
-  ":-`+++++++++:S`      :S`         :S` ::`         :-`       :S`          :+++++++`SSS    ::`         :-` ::`              :S`++`SS",
-  ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`              :S`  S:+`",
-  ":-`         :S`      :S`         :S` ::`         :-`       :S`                  :S`     ::`         :-` ::`SSSSSSSSSSSS  :S`   ++-:``",
-  ":-`         :S`      :S`SSSSSSSS:+`  ::`         :-` SSSSSS:S`SSSSSS  SSSSSSSSSS:S`     ::`         :-` ::+++++++++++++` :S`     +:+'SS",
-  ":+`         :+`      :++++++++++`    :+`         :+` :+++++++++++++`  :+++++++++++`     :+`         :+`                  :+`        +:+"
+  " █████╗ ██████╗ ██╗  ██╗██╗███████╗██╗  ██╗███████╗██╗  ██╗",
+  "██╔══██╗██╔══██╗██║  ██║██║██╔════╝██║  ██║██╔════╝██║  ██║",
+  "███████║██████╔╝███████║██║███████╗███████║█████╗  ███████║",
+  "██╔══██║██╔══██╗██╔══██║██║╚════██║██╔══██║██╔══╝  ██╔══██║",
+  "██║  ██║██████╔╝██║  ██║██║███████║██║  ██║███████╗██║  ██║",
+  "╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
 ];
 
-const SHARMA_LINES = [
-  "SSSSSSSSSSSSSS   SSS         SS        SSSSSSSS       SSSSSSSSSSSS    SSS   SSSS   SS        SSSSSSSS  ",
-  ":+++++++++++`    ::`         :-`     :+++++++`        :SS++++++++`    ::`   :SS:   :-`     :+++++++`   ",
-  "-S`++++++++++-    ::`         :-`  --`-+++++++--S` :S`++++++++--S` ::`  :S`:S`  :-`  --`-+++++++--S`",
-  ":S`               ::``SSSSSSS:-`   :-``        :S` :S`SSSSSSSS:+`  ::` :S`  :S` :-`  :-``        :S`",
-  ":+`               ::SS++++++++S`   :-`         :S` :SS++++++++S`   ::`:S`    :S`:-`  :-`         :S`",
-  "++-:SSSSSSS`      ::`+++++++++-:`  :-`SSSSSSSS:S`  :S`++++++++-:S` ::SS`     :SS-`   :-`SSSSSSSS:S`",
-  "  :+++++++`SSS    ::`         :-`  :-`+++++++++:S` :S`  S:+`       ::`        ::-`   :-`+++++++++:S`",
-  "          :S`     ::`         :-`  :-`         :S` :S`   ++-:``    ::`        ::-`   :-`         :S`",
-  "          :S`     ::`         :-`  :-`         :S` :S`     +:+'SS  ::`        ::-`   :-`         :S`",
-  "SSSSSSSSSS:S`     ::`         :-`  :-`         :S` :S`        +:+` ::`        ::-`   :-`         :S`",
-  ":+++++++++++`     :+`         :+`  :+`         :+` :+`        +:+` :+`        ::+`   :+`         :+`"
+const SHARMAA_LINES = [
+  "███████╗██╗  ██╗██████╗ ███╗   ███╗██████╗  █████╗  █████╗ ",
+  "██╔════╝██║  ██║██╔══██╗████╗ ████║██╔══██╗██╔══██╗██╔══██╗",
+  "███████╗███████║██████╔╝██╔████╔██║███████║███████║███████║",
+  "╚════██║██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║██╔══██║██╔══██║",
+  "███████║██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║██║  ██║██║  ██║",
+  "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝"
 ];
 
-// Animated Middle Column elements between ABHISHEK & SHARMA
+// Animated Middle Column elements between ABHISHEK & SHARMAA
 const GAP_ICONS = [
-  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim-beam">⚡</span>',
   '<span class="gap-anim">┆</span>',
-  '<span class="gap-anim-beam">│</span>',
-  '<span class="gap-anim">⚡</span>',
-  '<span class="gap-anim-beam">│</span>',
+  '<span class="gap-anim-beam">✦</span>',
   '<span class="gap-anim">┆</span>',
-  '<span class="gap-anim-beam">│</span>',
-  '<span class="gap-anim">⚡</span>',
-  '<span class="gap-anim-beam">│</span>',
-  '<span class="gap-anim">┆</span>',
-  '<span class="gap-anim-beam">│</span>'
+  '<span class="gap-anim-beam">⚡</span>',
+  '<span class="gap-anim">┆</span>'
 ];
 
-const GAP_LEFT = " ".repeat(12);
-const GAP_RIGHT = " ".repeat(12);
+const GAP_LEFT = " ".repeat(5);
+const GAP_RIGHT = " ".repeat(5);
 
 class TerminalEngine {
   constructor() {
@@ -56,6 +41,7 @@ class TerminalEngine {
     this.commandCursorElem = document.getElementById("command-cursor");
     this.terminalWinElem = document.getElementById("terminal-window");
     this.statusBadge = document.getElementById("status-badge");
+    this.subtitleElem = document.getElementById("banner-subtitle");
     
     this.commandToType = "./wordmark.sh --name";
     this.typeTimer = null;
@@ -109,6 +95,10 @@ class TerminalEngine {
     
     this.typedCmdElem.textContent = "";
     this.bannerElem.innerHTML = "";
+    if (this.subtitleElem) {
+      this.subtitleElem.style.opacity = "0";
+      this.subtitleElem.style.transform = "translateY(6px)";
+    }
     this.commandCursorElem.style.display = "inline-block";
     if (this.statusBadge) this.statusBadge.textContent = "zsh • running";
 
@@ -126,20 +116,20 @@ class TerminalEngine {
         
         setTimeout(() => {
           this.revealAsciiBanner();
-        }, 160);
+        }, 140);
       }
-    }, 40);
+    }, 35);
   }
 
   revealAsciiBanner() {
     const totalCols = ABHISHEK_LINES[0].length;
     let currentCol = 0;
-    const maxCols = totalCols + GAP_LEFT.length + 1 + GAP_RIGHT.length + SHARMA_LINES[0].length;
+    const maxCols = totalCols + GAP_LEFT.length + 1 + GAP_RIGHT.length + SHARMAA_LINES[0].length;
 
-    const intervalTime = 12;
+    const intervalTime = 14;
 
     this.asciiTimer = setInterval(() => {
-      currentCol += 3; // reveal speed
+      currentCol += 2; // smooth reveal speed
       
       this.renderBannerAtCol(currentCol);
 
@@ -157,23 +147,29 @@ class TerminalEngine {
     for (let i = 0; i < ABHISHEK_LINES.length; i++) {
       const abhi = ABHISHEK_LINES[i];
       const icon = GAP_ICONS[i];
-      const sharma = SHARMA_LINES[i];
+      const sharma = SHARMAA_LINES[i];
 
       let lineOutput = "";
 
       if (revealedCols <= abhi.length) {
-        lineOutput = this.escapeHtml(abhi.slice(0, revealedCols));
+        const abhiSlice = this.escapeHtml(abhi.slice(0, revealedCols));
+        lineOutput = `<span class="name-abhi">${abhiSlice}</span>`;
       } else if (revealedCols <= abhi.length + GAP_LEFT.length) {
         const leftSpacesCount = revealedCols - abhi.length;
-        lineOutput = this.escapeHtml(abhi) + " ".repeat(leftSpacesCount);
+        const abhiEscaped = this.escapeHtml(abhi);
+        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + " ".repeat(leftSpacesCount);
       } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1) {
-        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon;
+        const abhiEscaped = this.escapeHtml(abhi);
+        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon;
       } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length) {
         const rightSpacesCount = revealedCols - (abhi.length + GAP_LEFT.length + 1);
-        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon + " ".repeat(rightSpacesCount);
+        const abhiEscaped = this.escapeHtml(abhi);
+        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon + " ".repeat(rightSpacesCount);
       } else {
         const sharmaRevealed = revealedCols - (abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length);
-        lineOutput = this.escapeHtml(abhi) + GAP_LEFT + icon + GAP_RIGHT + this.escapeHtml(sharma.slice(0, sharmaRevealed));
+        const abhiEscaped = this.escapeHtml(abhi);
+        const sharmaSlice = this.escapeHtml(sharma.slice(0, sharmaRevealed));
+        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon + GAP_RIGHT + `<span class="name-sharmaa">${sharmaSlice}</span>`;
       }
 
       linesHtml.push(lineOutput);
@@ -187,7 +183,15 @@ class TerminalEngine {
     if (this.statusBadge) this.statusBadge.textContent = "zsh • done";
     
     // Append terminal cursor at end
-    this.bannerElem.innerHTML += '<span class="cursor"></span>';
+    this.bannerElem.innerHTML += ' <span class="cursor"></span>';
+
+    // Fade in subtitle badge
+    if (this.subtitleElem) {
+      setTimeout(() => {
+        this.subtitleElem.style.opacity = "1";
+        this.subtitleElem.style.transform = "translateY(0)";
+      }, 150);
+    }
   }
 
   escapeHtml(text) {
@@ -197,6 +201,12 @@ class TerminalEngine {
       .replace(/>/g, "&gt;");
   }
 }
+
+// Initialize on DOM Ready
+document.addEventListener("DOMContentLoaded", () => {
+  new TerminalEngine();
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   window.terminalInstance = new TerminalEngine();

@@ -252,26 +252,115 @@ body {
   width: 100%;
   overflow-x: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) transparent;
 }
 
 .ascii-banner {
   font-family: var(--font-mono);
-  font-size: clamp(0.13rem, 0.35vw, 0.33rem);
-  line-height: 1.12;
+  font-size: clamp(0.48rem, 1.05vw, 0.72rem);
+  line-height: 1.18;
   letter-spacing: -0.2px;
   font-weight: 700;
   white-space: pre;
   display: block;
   user-select: all;
   color: var(--text-bright);
-  filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.25));
+  filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.25));
   max-width: fit-content;
 }
 
-/* ANIMATED SPACE DIVIDER BETWEEN ABHISHEK & SHARMA */
+/* NAME COLOR GLOW ANIMATIONS FOR CLEAR VISIBILITY */
+.name-abhi {
+  color: #58a6ff;
+  text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+  animation: glowAbhi 3s ease-in-out infinite alternate;
+}
+
+.name-sharmaa {
+  color: #bc8cff;
+  text-shadow: 0 0 10px rgba(188, 140, 255, 0.5);
+  animation: glowSharma 3s ease-in-out 1.5s infinite alternate;
+}
+
+@keyframes glowAbhi {
+  0% {
+    color: #58a6ff;
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.6);
+  }
+  50% {
+    color: #79c0ff;
+    text-shadow: 0 0 18px rgba(121, 192, 255, 0.9), 0 0 30px rgba(88, 166, 255, 0.4);
+  }
+  100% {
+    color: #388bfd;
+    text-shadow: 0 0 12px rgba(56, 139, 253, 0.7);
+  }
+}
+
+@keyframes glowSharma {
+  0% {
+    color: #bc8cff;
+    text-shadow: 0 0 10px rgba(188, 140, 255, 0.6);
+  }
+  50% {
+    color: #d2a8ff;
+    text-shadow: 0 0 18px rgba(210, 168, 255, 0.9), 0 0 30px rgba(188, 140, 255, 0.4);
+  }
+  100% {
+    color: #a371f7;
+    text-shadow: 0 0 12px rgba(163, 113, 247, 0.7);
+  }
+}
+
+/* SUBTITLE NAME BADGE STYLING */
+.banner-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 16px;
+  background: rgba(22, 27, 34, 0.85);
+  border: 1px solid rgba(48, 54, 61, 0.8);
+  border-radius: 20px;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sub-icon {
+  color: #ffbd2e;
+  font-size: 0.85rem;
+  animation: pulseIcon 1.5s ease-in-out infinite alternate;
+}
+
+.sub-title {
+  color: #c9d1d9;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #58a6ff, #bc8cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub-divider {
+  color: var(--text-muted);
+}
+
+.sub-tag {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+@keyframes pulseIcon {
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px #ffbd2e); }
+  100% { transform: scale(1.2); filter: drop-shadow(0 0 8px #ffbd2e); }
+}
+
+/* ANIMATED SPACE DIVIDER BETWEEN ABHISHEK & SHARMAA */
 .gap-anim {
   display: inline-block;
   color: #58a6ff;
