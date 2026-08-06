@@ -216,15 +216,17 @@ body {
   z-index: 3;
   width: 100%;
   overflow-x: auto;
+  display: flex;
+  justify-content: center;
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) transparent;
 }
 
 .ascii-banner {
   font-family: var(--font-mono);
-  font-size: clamp(0.22rem, 0.68vw, 0.52rem);
+  font-size: clamp(0.13rem, 0.35vw, 0.33rem);
   line-height: 1.12;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
   font-weight: 700;
   white-space: pre;
   display: block;
