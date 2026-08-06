@@ -31,8 +31,8 @@ const GAP_ICONS = [
   '<span class="gap-anim">┆</span>'
 ];
 
-const GAP_LEFT = " ".repeat(5);
-const GAP_RIGHT = " ".repeat(5);
+const GAP_LEFT = " ".repeat(7);
+const GAP_RIGHT = " ".repeat(7);
 
 class TerminalEngine {
   constructor() {

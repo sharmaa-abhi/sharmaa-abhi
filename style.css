@@ -260,9 +260,9 @@ body {
 
 .ascii-banner {
   font-family: var(--font-mono);
-  font-size: clamp(0.48rem, 1.05vw, 0.72rem);
-  line-height: 1.18;
-  letter-spacing: -0.2px;
+  font-size: clamp(0.52rem, 1.1vw, 0.78rem);
+  line-height: 1.28;
+  letter-spacing: 0.02em;
   font-weight: 700;
   white-space: pre;
   display: block;
@@ -270,6 +270,7 @@ body {
   color: var(--text-bright);
   filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.25));
   max-width: fit-content;
+  padding: 8px 12px;
 }
 
 /* NAME COLOR GLOW ANIMATIONS FOR CLEAR VISIBILITY */
@@ -340,7 +341,7 @@ body {
 .sub-title {
   color: #c9d1d9;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   background: linear-gradient(90deg, #58a6ff, #bc8cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
