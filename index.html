@@ -12,7 +12,7 @@
   <div class="page-wrapper">
     
     <!-- TERMINAL CONTAINER -->
-    <div class="terminal-container" id="terminal-window">
+    <div class="terminal-container" id="terminal-window" title="Click to replay animation">
       
       <!-- CRT & Glow Effects -->
       <div class="scanlines"></div>
@@ -21,15 +21,15 @@
       <!-- TOP BAR -->
       <div class="terminal-header">
         <div class="window-dots">
-          <span class="dot dot-red" title="Close"></span>
+          <span class="dot dot-red" id="btn-close" title="Replay Animation"></span>
           <span class="dot dot-yellow" title="Minimize"></span>
-          <span class="dot dot-green" title="Expand"></span>
+          <span class="dot dot-green" id="btn-expand" title="Toggle Glow"></span>
         </div>
         <div class="terminal-title">
-          <span class="username">sharmaa-abhi@github</span>: ~$ <span class="cmd">./wordmark.sh --name</span>
+          <span class="username">sharmaa-abhi@github</span>: ~$ <span class="cmd" id="header-cmd">./wordmark.sh --name</span>
         </div>
         <div class="header-right">
-          <span class="status-badge">zsh</span>
+          <span class="status-badge" id="status-badge">zsh • active</span>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
         <!-- Command Prompt Line -->
         <div class="prompt-line">
           <span class="prompt-path">sharmaa-abhi@github: ~$</span>
-          <span class="prompt-command">./wordmark.sh --name</span>
+          <span class="prompt-command" id="typed-command"></span><span class="command-cursor" id="command-cursor"></span>
         </div>
 
         <!-- ASCII Banner Container -->
@@ -50,8 +50,11 @@
       </div>
     </div>
 
+    <!-- REPLAY TOOLTIP / INSTRUCTION -->
+    <div class="replay-hint">💡 Click terminal anywhere to replay animation</div>
+
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
