@@ -1,6 +1,5 @@
 <div align="center">
 
-<h1>✦ A B H I S H E K &nbsp;&nbsp; S H A R M A A ✦</h1>
 
 <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
 
