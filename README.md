@@ -54,12 +54,6 @@
   <img src="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" width="100%" alt="sharmaa-abhi heatmap" />
 </picture>
 
-</div>
-
-<div align="center">
-
-<h3><code>sharmaa-abhi@github ~ $ ./snake-game.sh</code></h3>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake.svg" />
