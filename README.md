@@ -1,5 +1,7 @@
 <div align="center">
 
+<h1>✦ A B H I S H E K &nbsp;&nbsp; S H A R M A A ✦</h1>
+
 <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
 
 <img src="https://www.gitskins.com/api/premium-card?username=sharmaa-abhi&theme=github-dark&variant=glass&avatar=github" alt="GitSkins Glass Profile" width="820" />
@@ -53,7 +55,11 @@
   <img src="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" width="100%" alt="sharmaa-abhi heatmap" />
 </picture>
 
-<br/>
+</div>
+
+<div align="center">
+
+<h3><code>sharmaa-abhi@github ~ $ ./snake-game.sh</code></h3>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake-dark.svg" />
