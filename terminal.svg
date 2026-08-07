@@ -149,7 +149,7 @@
     <text class="ascii-text" x="26" y="180"><tspan class="abhi-glow">╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝</tspan>     <tspan class="beam-glow">┆</tspan>     <tspan class="sharma-glow">╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝</tspan></text>
 
     <!-- Subtitle Badge line in SVG -->
-    <text class="subtitle-txt" x="26" y="210"><tspan fill="#ffbd2e">✦</tspan> <tspan fill="#58a6ff" font-weight="700">A B H I S H E K &nbsp;&nbsp; S H A R M A A</tspan> <tspan fill="#8b949e">• Full-Stack Engineer &amp; Open Source Developer</tspan></text>
+    <text class="subtitle-txt" x="26" y="210"><tspan fill="#ffbd2e">✦</tspan> <tspan fill="#58a6ff" font-weight="700">A B H I S H E K &#160;&#160; S H A R M A A</tspan> <tspan fill="#8b949e">• Full-Stack Engineer &amp; Open Source Developer</tspan></text>
   </g>
 
   <!-- Animated Blinking Cursor at the end -->
