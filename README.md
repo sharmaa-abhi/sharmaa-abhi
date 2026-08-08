@@ -2,6 +2,8 @@
 
 <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
 
+<br>
+
 <img src="https://www.gitskins.com/api/card-animated?username=sharmaa-abhi&theme=zen" alt="GitSkins Animated Card" width="820" />
 
 <h3><code>sharmaa-abhi@github ~ $ whoami</code></h3>
