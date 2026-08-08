@@ -1,10 +1,8 @@
 <div align="center">
 
-
 <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
 
 <img src="https://www.gitskins.com/api/premium-card?username=sharmaa-abhi&theme=github-dark&variant=glass&avatar=github" alt="GitSkins Glass Profile" width="820" />
-
 <h3><code>sharmaa-abhi@github ~ $ whoami</code></h3>
 
 <table>
@@ -63,4 +61,3 @@
 </div>
 
 <p align="center"><sub>Abhishek Sharma  · Profile generated with <a href="https://www.gitskins.com/readme-generator">GitSkins</a></sub></p>
-
