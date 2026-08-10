@@ -2,14 +2,12 @@
   <defs>
     <!-- Fonts & Keyframe Animations -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;display=swap');
-
       .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1px; rx: 16px; }
       .header-bg { fill: #161b22; }
       .header-border { stroke: #30363d; stroke-width: 1px; }
       
       .title {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 13px;
         fill: #8b949e;
         font-weight: 500;
@@ -19,7 +17,7 @@
       .title .cmd { fill: #c9d1d9; }
 
       .prompt-text {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 14px;
         font-weight: 500;
         text-anchor: middle;
@@ -28,7 +26,7 @@
       .prompt-cmd { fill: #c9d1d9; }
 
       .ascii-text {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 9.5px;
         font-weight: 700;
         white-space: pre;
@@ -47,7 +45,7 @@
         filter: drop-shadow(0 0 8px #ffbd2e);
       }
       .subtitle-txt {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 12px;
         font-weight: 700;
         fill: #c9d1d9;
@@ -110,7 +108,9 @@
 
     <!-- Clip Path for Typewriter Animation -->
     <clipPath id="typing-clip">
-      <rect class="typing-mask" x="1" y="42" width="0" height="198" />
+      <rect class="typing-mask" x="1" y="42" width="1348" height="198">
+        <animate attributeName="width" from="0" to="1348" dur="2.2s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" />
+      </rect>
     </clipPath>
   </defs>
 
@@ -153,7 +153,7 @@
     <text class="ascii-text" x="675" y="180"><tspan class="abhi-glow">╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝</tspan>     <tspan class="beam-glow">┆</tspan>     <tspan class="sharma-glow">╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝</tspan></text>
 
     <!-- Subtitle Badge line in SVG -->
-    <text class="subtitle-txt" x="675" y="210"><tspan fill="#ffbd2e">✦</tspan> <tspan fill="#58a6ff" font-weight="700">A B H I S H E K &#160;&#160; S H A R M A</tspan> <tspan fill="#8b949e">• Full-Stack Engineer &amp; Open Source Developer</tspan></text>
+    <text class="subtitle-txt" x="675" y="210"><tspan fill="#ffbd2e">✦</tspan> <tspan fill="#58a6ff" font-weight="700">A B H I S H E K   S H A R M A</tspan> <tspan fill="#8b949e">• Full-Stack Engineer &amp; Open Source Developer</tspan></text>
   </g>
 
   <!-- Animated Blinking Cursor at the end (centered below text) -->
