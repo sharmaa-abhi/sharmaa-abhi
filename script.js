@@ -85,8 +85,10 @@ class TerminalEngine {
   clearTimers() {
     if (this.typeTimer) clearInterval(this.typeTimer);
     if (this.asciiTimer) clearInterval(this.asciiTimer);
+    if (this.bannerTimeout) clearTimeout(this.bannerTimeout);
     this.typeTimer = null;
     this.asciiTimer = null;
+    this.bannerTimeout = null;
   }
 
   startSequence() {
@@ -114,7 +116,7 @@ class TerminalEngine {
         clearInterval(this.typeTimer);
         this.typeTimer = null;
         
-        setTimeout(() => {
+        this.bannerTimeout = setTimeout(() => {
           this.revealAsciiBanner();
         }, 140);
       }
@@ -203,11 +205,6 @@ class TerminalEngine {
 }
 
 // Initialize on DOM Ready
-document.addEventListener("DOMContentLoaded", () => {
-  new TerminalEngine();
-});
-
-
 document.addEventListener("DOMContentLoaded", () => {
   window.terminalInstance = new TerminalEngine();
 });
