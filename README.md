@@ -1,15 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/space-shooter.gif" alt="sharmaa-abhi's contribution Space Shooter" />
-</p>
-
-<h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=22C55E&center=true&vCenter=true&width=435&lines=Hi+👋+I'm+Abhishek%20Sharma%20;Welcome+to+my+profile!" alt="Typing SVG" />
-</h1>
-
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/227398936?u=aced0de9d269a32facd3a3e67d6fa93160ca5aba&v=4" width="150" style="border-radius: 50%;" alt="Abhishek Sharma" />
-</p>
-
 <div align="center">
 
 <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
@@ -34,8 +22,6 @@
 </table>
 
 <p><b>Frontend or full-stack engineer</b></p>
-<p>Passionate developer building awesome things.</p>
-<p>👥 6 followers · 8 following</p>
 
 <p><a href="https://github.com/sharmaa-abhi">GitHub</a></p>
 
@@ -43,7 +29,29 @@
 
 ---
 
-### 🛠️ Languages & Tools
+<h2 align="center">🎮 Contribution Space Shooter</h2>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/space-shooter.gif" alt="sharmaa-abhi's contribution Space Shooter" />
+</p>
+
+<h1 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=22C55E&center=true&vCenter=true&width=435&lines=Hi+👋+I'm+Abhishek%20Sharma%20;Welcome+to+my+profile!" alt="Typing SVG" />
+</h1>
+
+<p align="center">
+  <img src="https://avatars.githubusercontent.com/u/227398936?u=aced0de9d269a32facd3a3e67d6fa93160ca5aba&v=4" width="150" style="border-radius: 50%;" alt="Abhishek Sharma" />
+</p>
+
+---
+
+## 👨‍💻 About Me
+
+Passionate developer building awesome things.
+
+👥 **6** followers · **8** following
+
+---
 
 <div align="center">
 
@@ -69,7 +77,7 @@
 
 ---
 
-### 📊 GitHub Stats
+## 📊 GitHub Stats
 
 <p align="center">
   <picture>
@@ -80,7 +88,7 @@
 
 ---
 
-### 🚀 Featured Projects
+## 🚀 Featured Projects
 
 | Project | Language | Description | Stats |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +107,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
-  <img src="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" width="100%" alt="sharmaa-abhi contribution activity" />
+  <img src="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" width="100%" alt="sharmaa-abhi heatmap" />
 </picture>
 
 <picture>
@@ -112,7 +120,7 @@
 
 ---
 
-### 🤝 Connect With Me
+## 🤝 Connect With Me
 
 <p align="center">
   <picture>
