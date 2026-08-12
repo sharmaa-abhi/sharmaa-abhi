@@ -150,9 +150,9 @@
 <br />
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/tobiasmeyhoefer/tobiasmeyhoefer/output/github-snake.svg" width="820" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" width="820" />
 </picture>
 
 </div>
