@@ -1,68 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitSkins Wordmark Terminal - ABHISHEK SHARMA</title>
-  <meta name="description" content="Pixel-perfect clone of GitSkins wordmark terminal component with text letter ASCII art for ABHISHEK SHARMA">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="page-wrapper">
-    
-    <!-- TERMINAL CONTAINER -->
-    <div class="terminal-container" id="terminal-window" title="Click to replay animation">
-      
-      <!-- CRT & Glow Effects -->
-      <div class="scanlines"></div>
-      <div class="terminal-glow"></div>
-
-      <!-- TOP BAR -->
-      <div class="terminal-header">
-        <div class="window-dots">
-          <span class="dot dot-red" id="btn-close" title="Replay Animation"></span>
-          <span class="dot dot-yellow" title="Minimize"></span>
-          <span class="dot dot-green" id="btn-expand" title="Toggle Glow"></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Defender</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="hud" aria-label="Game HUD">
+        <div class="hud-item">
+          <span class="label">Score</span>
+          <strong id="score">0</strong>
         </div>
-        <div class="terminal-title">
-          <span class="username">sharmaa-abhi@github</span>: ~$ <span class="cmd" id="header-cmd">./wordmark.sh --name</span>
+        <div class="hud-item">
+          <span class="label">Health</span>
+          <strong id="health">100</strong>
         </div>
-        <div class="header-right">
-          <span class="status-badge" id="status-badge">zsh • active</span>
+        <div class="hud-item">
+          <span class="label">Level</span>
+          <strong id="level">1</strong>
+        </div>
+      </header>
+
+      <canvas id="gameCanvas" width="960" height="600" aria-label="Shooter game canvas"></canvas>
+
+      <div class="overlay" id="overlay">
+        <div class="panel">
+          <p class="eyebrow">Arcade Defense</p>
+          <h1>Star Defender</h1>
+          <p class="subtitle">Hold the line against incoming raiders.</p>
+          <ul>
+            <li>Move: A/D or Arrow keys</li>
+            <li>Shoot: Space or mouse click</li>
+            <li>Restart: Enter after defeat</li>
+          </ul>
+          <button id="startButton" type="button">Start Mission</button>
         </div>
       </div>
+    </main>
 
-      <!-- MAIN TERMINAL BODY -->
-      <div class="terminal-body">
-        
-        <!-- Command Prompt Line -->
-        <div class="prompt-line">
-          <span class="prompt-path">sharmaa-abhi@github: ~$</span>
-          <span class="prompt-command" id="typed-command"></span><span class="command-cursor" id="command-cursor"></span>
-        </div>
-
-        <!-- ASCII Banner Container -->
-        <div class="ascii-wrapper">
-          <pre class="ascii-banner" id="ascii-banner" aria-label="ABHISHEK SHARMA Banner"></pre>
-        </div>
-
-        <!-- Subtitle Clear Name Display -->
-        <div class="banner-subtitle" id="banner-subtitle">
-          <span class="sub-icon">✦</span>
-          <span class="sub-title">A B H I S H E K &nbsp;&nbsp; S H A R M A</span>
-          <span class="sub-divider">•</span>
-          <span class="sub-tag">Full-Stack Engineer &amp; Open Source Developer</span>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- REPLAY TOOLTIP / INSTRUCTION -->
-    <div class="replay-hint">💡 Click terminal anywhere to replay animation</div>
-
-  </div>
-
-  <script src="script.js?v=3"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

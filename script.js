@@ -1,210 +1,408 @@
-/**
- * GitSkins Terminal Banner Component - Interactive Engine
- * Animated spacing and pulsing energy beam between ABHISHEK and SHARMAA
- */
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const overlay = document.getElementById('overlay');
+const startButton = document.getElementById('startButton');
+const scoreEl = document.getElementById('score');
+const healthEl = document.getElementById('health');
+const levelEl = document.getElementById('level');
 
-const ABHISHEK_LINES = [
-  " █████╗ ██████╗ ██╗  ██╗██╗███████╗██╗  ██╗███████╗██╗  ██╗",
-  "██╔══██╗██╔══██╗██║  ██║██║██╔════╝██║  ██║██╔════╝██║ ██╔╝",
-  "███████║██████╔╝███████║██║███████╗███████║█████╗  █████╔╝ ",
-  "██╔══██║██╔══██╗██╔══██║██║╚════██║██╔══██║██╔══╝  ██╔═██╗ ",
-  "██║  ██║██████╔╝██║  ██║██║███████║██║  ██║███████╗██║  ██╗",
-  "╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
-];
+const keys = {};
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-const SHARMAA_LINES = [
-  "███████╗██╗  ██╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ",
-  "██╔════╝██║  ██║██╔══██╗██╔══██╗████╗ ████║██╔══██╗",
-  "███████╗███████║███████║██████╔╝██╔████╔██║███████║",
-  "╚════██║██╔══██║██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║",
-  "███████║██║  ██║██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║",
-  "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝"
-];
+const state = {
+  started: false,
+  gameOver: false,
+  score: 0,
+  health: 100,
+  level: 1,
+  enemySpawnTimer: 0,
+  lastShotAt: 0,
+  lastTime: 0,
+  stars: [],
+  playerBullets: [],
+  enemyBullets: [],
+  enemies: [],
+  particles: []
+};
 
-// Animated Middle Column elements between ABHISHEK & SHARMAA
-const GAP_ICONS = [
-  '<span class="gap-anim-beam">⚡</span>',
-  '<span class="gap-anim">┆</span>',
-  '<span class="gap-anim-beam">✦</span>',
-  '<span class="gap-anim">┆</span>',
-  '<span class="gap-anim-beam">⚡</span>',
-  '<span class="gap-anim">┆</span>'
-];
+const player = {
+  x: canvas.width / 2,
+  y: canvas.height - 52,
+  width: 34,
+  height: 30,
+  speed: 5.5,
+  shotCooldown: 180,
+  color: '#67e8f9'
+};
 
-const GAP_LEFT = " ".repeat(7);
-const GAP_RIGHT = " ".repeat(7);
+function resetGame() {
+  state.started = true;
+  state.gameOver = false;
+  state.score = 0;
+  state.health = 100;
+  state.level = 1;
+  state.enemySpawnTimer = 0;
+  state.lastShotAt = 0;
+  state.playerBullets = [];
+  state.enemyBullets = [];
+  state.enemies = [];
+  state.particles = [];
+  player.x = canvas.width / 2;
+  player.y = canvas.height - 52;
+  updateHud();
+  overlay.classList.add('hidden');
+}
 
-class TerminalEngine {
-  constructor() {
-    this.bannerElem = document.getElementById("ascii-banner");
-    this.typedCmdElem = document.getElementById("typed-command");
-    this.commandCursorElem = document.getElementById("command-cursor");
-    this.terminalWinElem = document.getElementById("terminal-window");
-    this.statusBadge = document.getElementById("status-badge");
-    this.subtitleElem = document.getElementById("banner-subtitle");
-    
-    this.commandToType = "./wordmark.sh --name";
-    this.typeTimer = null;
-    this.asciiTimer = null;
-    this.isAnimating = false;
+function updateHud() {
+  scoreEl.textContent = String(state.score);
+  healthEl.textContent = String(Math.max(0, Math.ceil(state.health)));
+  levelEl.textContent = String(state.level);
+}
 
-    this.init();
-  }
+function buildStars() {
+  state.stars = Array.from({ length: 80 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    speed: Math.random() * 0.8 + 0.2
+  }));
+}
 
-  init() {
-    this.setupEvents();
-    this.startSequence();
-  }
+function spawnEnemy() {
+  const size = 20 + Math.random() * 12;
+  const x = 18 + Math.random() * (canvas.width - 36 - size);
+  const y = -30;
+  const speed = 1 + state.level * 0.4 + Math.random() * 0.7;
+  const health = 1 + Math.floor(state.level / 2);
 
-  setupEvents() {
-    if (this.terminalWinElem) {
-      this.terminalWinElem.addEventListener("click", () => {
-        if (!this.isAnimating) {
-          this.startSequence();
-        }
-      });
-    }
+  state.enemies.push({
+    x,
+    y,
+    width: size,
+    height: size,
+    speed,
+    health,
+    fireCooldown: 1000 + Math.random() * 1400,
+    drift: (Math.random() - 0.5) * 1.2
+  });
+}
 
-    const closeBtn = document.getElementById("btn-close");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.startSequence();
-      });
-    }
+function firePlayerShot() {
+  const currentTime = performance.now();
+  if (currentTime - state.lastShotAt < player.shotCooldown) return;
 
-    const expandBtn = document.getElementById("btn-expand");
-    if (expandBtn) {
-      expandBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.terminalWinElem.classList.toggle("glow-boost");
-      });
-    }
-  }
+  state.lastShotAt = currentTime;
+  state.playerBullets.push({
+    x: player.x,
+    y: player.y - 18,
+    radius: 5,
+    speed: 8,
+    damage: 1
+  });
+}
 
-  clearTimers() {
-    if (this.typeTimer) clearInterval(this.typeTimer);
-    if (this.asciiTimer) clearInterval(this.asciiTimer);
-    if (this.bannerTimeout) clearTimeout(this.bannerTimeout);
-    this.typeTimer = null;
-    this.asciiTimer = null;
-    this.bannerTimeout = null;
-  }
+function fireEnemyShot(enemy) {
+  state.enemyBullets.push({
+    x: enemy.x,
+    y: enemy.y + enemy.height / 2,
+    radius: 5,
+    speed: 4 + state.level * 0.25,
+    damage: 10
+  });
+}
 
-  startSequence() {
-    this.clearTimers();
-    this.isAnimating = true;
-    
-    this.typedCmdElem.textContent = "";
-    this.bannerElem.innerHTML = "";
-    if (this.subtitleElem) {
-      this.subtitleElem.style.opacity = "0";
-      this.subtitleElem.style.transform = "translateY(6px)";
-    }
-    this.commandCursorElem.style.display = "inline-block";
-    if (this.statusBadge) this.statusBadge.textContent = "zsh • running";
-
-    // Phase 1: Typewriter animation on `./wordmark.sh --name`
-    let charIndex = 0;
-    const fullCmd = this.commandToType;
-
-    this.typeTimer = setInterval(() => {
-      this.typedCmdElem.textContent += fullCmd[charIndex];
-      charIndex++;
-
-      if (charIndex >= fullCmd.length) {
-        clearInterval(this.typeTimer);
-        this.typeTimer = null;
-        
-        this.bannerTimeout = setTimeout(() => {
-          this.revealAsciiBanner();
-        }, 140);
-      }
-    }, 35);
-  }
-
-  revealAsciiBanner() {
-    const totalCols = ABHISHEK_LINES[0].length;
-    let currentCol = 0;
-    const maxCols = totalCols + GAP_LEFT.length + 1 + GAP_RIGHT.length + SHARMAA_LINES[0].length;
-
-    const intervalTime = 14;
-
-    this.asciiTimer = setInterval(() => {
-      currentCol += 2; // smooth reveal speed
-      
-      this.renderBannerAtCol(currentCol);
-
-      if (currentCol >= maxCols) {
-        clearInterval(this.asciiTimer);
-        this.asciiTimer = null;
-        this.finishAnimation();
-      }
-    }, intervalTime);
-  }
-
-  renderBannerAtCol(revealedCols) {
-    const linesHtml = [];
-
-    for (let i = 0; i < ABHISHEK_LINES.length; i++) {
-      const abhi = ABHISHEK_LINES[i];
-      const icon = GAP_ICONS[i];
-      const sharma = SHARMAA_LINES[i];
-
-      let lineOutput = "";
-
-      if (revealedCols <= abhi.length) {
-        const abhiSlice = this.escapeHtml(abhi.slice(0, revealedCols));
-        lineOutput = `<span class="name-abhi">${abhiSlice}</span>`;
-      } else if (revealedCols <= abhi.length + GAP_LEFT.length) {
-        const leftSpacesCount = revealedCols - abhi.length;
-        const abhiEscaped = this.escapeHtml(abhi);
-        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + " ".repeat(leftSpacesCount);
-      } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1) {
-        const abhiEscaped = this.escapeHtml(abhi);
-        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon;
-      } else if (revealedCols <= abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length) {
-        const rightSpacesCount = revealedCols - (abhi.length + GAP_LEFT.length + 1);
-        const abhiEscaped = this.escapeHtml(abhi);
-        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon + " ".repeat(rightSpacesCount);
-      } else {
-        const sharmaRevealed = revealedCols - (abhi.length + GAP_LEFT.length + 1 + GAP_RIGHT.length);
-        const abhiEscaped = this.escapeHtml(abhi);
-        const sharmaSlice = this.escapeHtml(sharma.slice(0, sharmaRevealed));
-        lineOutput = `<span class="name-abhi">${abhiEscaped}</span>` + GAP_LEFT + icon + GAP_RIGHT + `<span class="name-sharmaa">${sharmaSlice}</span>`;
-      }
-
-      linesHtml.push(lineOutput);
-    }
-
-    this.bannerElem.innerHTML = linesHtml.join("\n");
-  }
-
-  finishAnimation() {
-    this.isAnimating = false;
-    if (this.statusBadge) this.statusBadge.textContent = "zsh • done";
-    
-    // Append terminal cursor at end
-    this.bannerElem.innerHTML += ' <span class="cursor"></span>';
-
-    // Fade in subtitle badge
-    if (this.subtitleElem) {
-      setTimeout(() => {
-        this.subtitleElem.style.opacity = "1";
-        this.subtitleElem.style.transform = "translateY(0)";
-      }, 150);
-    }
-  }
-
-  escapeHtml(text) {
-    return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
+function createParticles(x, y, color, amount = 14) {
+  for (let i = 0; i < amount; i += 1) {
+    const angle = (Math.PI * 2 * i) / amount + Math.random() * 0.6;
+    const speed = 1.5 + Math.random() * 3.2;
+    state.particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 25 + Math.random() * 15,
+      color
+    });
   }
 }
 
-// Initialize on DOM Ready
-document.addEventListener("DOMContentLoaded", () => {
-  window.terminalInstance = new TerminalEngine();
+function handleInput() {
+  const moveLeft = keys.ArrowLeft || keys.KeyA;
+  const moveRight = keys.ArrowRight || keys.KeyD;
+
+  if (moveLeft && !moveRight) {
+    player.x -= player.speed;
+  }
+  if (moveRight && !moveLeft) {
+    player.x += player.speed;
+  }
+
+  player.x = clamp(player.x, 28, canvas.width - 28);
+
+  if ((keys.Space || keys.KeyK) && state.started && !state.gameOver) {
+    firePlayerShot();
+  }
+}
+
+function updateGame(delta) {
+  if (!state.started || state.gameOver) return;
+
+  state.level = 1 + Math.floor(state.score / 120);
+
+  for (const star of state.stars) {
+    star.y += star.speed * delta * 0.06;
+    if (star.y > canvas.height) {
+      star.y = -5;
+      star.x = Math.random() * canvas.width;
+    }
+  }
+
+  state.enemySpawnTimer -= delta;
+  if (state.enemySpawnTimer <= 0) {
+    spawnEnemy();
+    state.enemySpawnTimer = Math.max(420, 1100 - state.level * 90) - Math.random() * 200;
+  }
+
+  state.playerBullets.forEach((bullet) => {
+    bullet.y -= bullet.speed;
+  });
+
+  state.enemyBullets.forEach((bullet) => {
+    bullet.y += bullet.speed;
+  });
+
+  state.enemies.forEach((enemy) => {
+    enemy.y += enemy.speed * (delta / 16.67);
+    enemy.x += Math.sin((enemy.y + enemy.width) * 0.04) * enemy.drift * (delta / 16.67);
+    enemy.fireCooldown -= delta;
+    if (enemy.fireCooldown <= 0) {
+      fireEnemyShot(enemy);
+      enemy.fireCooldown = 1000 + Math.random() * 1200;
+    }
+  });
+
+  state.particles.forEach((particle) => {
+    particle.x += particle.vx * (delta / 16.67);
+    particle.y += particle.vy * (delta / 16.67);
+    particle.life -= delta * 0.06;
+  });
+
+  for (let i = state.playerBullets.length - 1; i >= 0; i -= 1) {
+    const bullet = state.playerBullets[i];
+    if (bullet.y < -15) {
+      state.playerBullets.splice(i, 1);
+      continue;
+    }
+
+    for (let j = state.enemies.length - 1; j >= 0; j -= 1) {
+      const enemy = state.enemies[j];
+      if (
+        bullet.x > enemy.x &&
+        bullet.x < enemy.x + enemy.width &&
+        bullet.y > enemy.y &&
+        bullet.y < enemy.y + enemy.height
+      ) {
+        enemy.health -= bullet.damage;
+        state.playerBullets.splice(i, 1);
+
+        if (enemy.health <= 0) {
+          createParticles(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, '#fbbf24', 22);
+          state.enemies.splice(j, 1);
+          state.score += 10;
+          updateHud();
+        }
+        break;
+      }
+    }
+  }
+
+  for (let i = state.enemyBullets.length - 1; i >= 0; i -= 1) {
+    const bullet = state.enemyBullets[i];
+    if (
+      bullet.x > player.x - player.width / 2 &&
+      bullet.x < player.x + player.width / 2 &&
+      bullet.y > player.y - player.height / 2 &&
+      bullet.y < player.y + player.height / 2
+    ) {
+      state.enemyBullets.splice(i, 1);
+      state.health -= bullet.damage;
+      createParticles(player.x, player.y, '#f87171', 12);
+      updateHud();
+      if (state.health <= 0) {
+        state.gameOver = true;
+        overlay.classList.remove('hidden');
+        overlay.querySelector('h1').textContent = 'Mission Failed';
+        overlay.querySelector('.subtitle').textContent = `Final score: ${state.score}. Press Enter to fly again.`;
+        startButton.textContent = 'Retry Mission';
+      }
+      continue;
+    }
+
+    if (bullet.y > canvas.height + 20) {
+      state.enemyBullets.splice(i, 1);
+    }
+  }
+
+  for (let i = state.enemies.length - 1; i >= 0; i -= 1) {
+    const enemy = state.enemies[i];
+    if (enemy.y + enemy.height > canvas.height) {
+      state.enemies.splice(i, 1);
+      state.health -= 12;
+      createParticles(enemy.x, enemy.y, '#f472b6', 18);
+      updateHud();
+      if (state.health <= 0) {
+        state.gameOver = true;
+        overlay.classList.remove('hidden');
+        overlay.querySelector('h1').textContent = 'Mission Failed';
+        overlay.querySelector('.subtitle').textContent = `Final score: ${state.score}. Press Enter to fly again.`;
+        startButton.textContent = 'Retry Mission';
+      }
+    }
+  }
+
+  state.particles = state.particles.filter((particle) => particle.life > 0);
+}
+
+function drawBackground() {
+  ctx.fillStyle = '#020617';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  for (const star of state.stars) {
+    ctx.fillStyle = 'rgba(148, 163, 184, 0.9)';
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.strokeStyle = 'rgba(103, 232, 249, 0.18)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < canvas.width; x += 48) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+}
+
+function drawPlayer() {
+  ctx.save();
+  ctx.translate(player.x, player.y);
+
+  ctx.fillStyle = '#67e8f9';
+  ctx.beginPath();
+  ctx.moveTo(0, -18);
+  ctx.lineTo(12, 14);
+  ctx.lineTo(0, 8);
+  ctx.lineTo(-12, 14);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = '#c084fc';
+  ctx.fillRect(-4, 10, 8, 12);
+
+  ctx.restore();
+}
+
+function drawEnemy(enemy) {
+  ctx.save();
+  ctx.translate(enemy.x, enemy.y);
+  ctx.fillStyle = '#f472b6';
+  ctx.beginPath();
+  ctx.moveTo(enemy.width / 2, 0);
+  ctx.lineTo(enemy.width, enemy.height * 0.4);
+  ctx.lineTo(enemy.width * 0.8, enemy.height);
+  ctx.lineTo(enemy.width * 0.2, enemy.height);
+  ctx.lineTo(0, enemy.height * 0.4);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = '#fbbf24';
+  ctx.fillRect(enemy.width * 0.28, enemy.height * 0.25, enemy.width * 0.44, 4);
+  ctx.restore();
+}
+
+function drawBullets() {
+  for (const bullet of state.playerBullets) {
+    ctx.fillStyle = '#67e8f9';
+    ctx.beginPath();
+    ctx.arc(bullet.x, bullet.y, bullet.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  for (const bullet of state.enemyBullets) {
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath();
+    ctx.arc(bullet.x, bullet.y, bullet.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawParticles() {
+  for (const particle of state.particles) {
+    ctx.fillStyle = particle.color;
+    ctx.globalAlpha = Math.max(0, particle.life / 35);
+    ctx.fillRect(particle.x, particle.y, 3, 3);
+    ctx.globalAlpha = 1;
+  }
+}
+
+function draw() {
+  drawBackground();
+  drawBullets();
+  for (const enemy of state.enemies) drawEnemy(enemy);
+  drawPlayer();
+  drawParticles();
+}
+
+function gameLoop(timestamp) {
+  const delta = timestamp - (state.lastTime || timestamp);
+  state.lastTime = timestamp;
+
+  handleInput();
+  updateGame(delta);
+  draw();
+
+  requestAnimationFrame(gameLoop);
+}
+
+function resetOverlayCopy() {
+  overlay.querySelector('h1').textContent = 'Star Defender';
+  overlay.querySelector('.subtitle').textContent = 'Hold the line against incoming raiders.';
+  startButton.textContent = 'Start Mission';
+}
+
+startButton.addEventListener('click', () => {
+  resetOverlayCopy();
+  resetGame();
 });
+
+document.addEventListener('keydown', (event) => {
+  keys[event.code] = true;
+
+  if (event.code === 'Space') {
+    event.preventDefault();
+  }
+
+  if (event.code === 'Enter' && state.gameOver) {
+    resetOverlayCopy();
+    resetGame();
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  keys[event.code] = false;
+});
+
+canvas.addEventListener('pointerdown', () => {
+  if (!state.started || state.gameOver) {
+    resetOverlayCopy();
+    resetGame();
+    return;
+  }
+  firePlayerShot();
+});
+
+buildStars();
+resetOverlayCopy();
+updateHud();
+requestAnimationFrame(gameLoop);
