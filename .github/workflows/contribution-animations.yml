@@ -29,13 +29,15 @@ jobs:
           output-path: 'space-shooter.gif'
           strategy: 'random'
 
-      - name: Generate Snake SVG Animations
+      - name: Generate Snake SVG Animations & Contribution Grid
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#22c55e
 
       - name: Move Space Shooter to dist directory
         run: |

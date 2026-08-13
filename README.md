@@ -149,11 +149,28 @@
 <br />
 <br />
 
+<!-- Small Green Contribution Grid SVG -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" />
+  <img alt="github-contribution-grid-snake" src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" width="820" />
+</picture>
+
+<br />
+<br />
+
+<!-- Snake Animation SVG -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" />
   <img alt="github-snake" src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" width="820" />
 </picture>
+
+<br />
+<br />
+
+<!-- Green Contribution Activity Graph SVG -->
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true" width="820" alt="Green Activity Graph SVG" />
 
 </div>
 
