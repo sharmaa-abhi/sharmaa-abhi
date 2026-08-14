@@ -109,32 +109,12 @@
 
 <h2>📊 GitHub Statistics</h2>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sharmaa-abhi&show_icons=true&theme=dark&bg_color=0d1117&title_color=22c55e&icon_color=22c55e&text_color=c9d1d9&border_color=22c55e&count_private=true" height="170" alt="sharmaa-abhi's GitHub Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sharmaa-abhi&theme=dark&bg_color=0d1117&title_color=22c55e&text_color=c9d1d9&border_color=22c55e&layout=compact" height="170" alt="Top Languages" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sharmaa-abhi&theme=dark&background=0d1117&border=22c55e&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakNum=22c55e&sideNums=22c55e&sideTitle=c9d1d9&dates=8b949e" width="820" alt="GitHub Streak Stats" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
+  <img src="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal" alt="GitHub Stats" width="820" />
+</picture>
 
 </div>
-
-<br />
-<hr />
-<br />
-
-<!-- FEATURED PROJECTS SECTION -->
-## 🚀 Featured Projects
-
-| Project | Tech Stack | Description | Stats |
-| :--- | :--- | :--- | :---: |
-| **[Smart-Stadiums-Tournament](https://github.com/sharmaa-abhi/Smart-Stadiums-Tournament)** | `JavaScript` `GenAI` | GenAI-powered solution to optimize stadium operations & FIFA World Cup 2026 experience. | ⭐ 0 \| 🍴 0 |
-| **[ChessCode](https://github.com/sharmaa-abhi/ChessCode)** | `JavaScript` | Interactive chess engine & coding platform. | ⭐ 0 \| 🍴 1 |
-| **[clone-myntra](https://github.com/sharmaa-abhi/clone-myntra)** | `CSS` `HTML` | Pixel-perfect UI clone of Myntra e-commerce store. | ⭐ 0 \| 🍴 0 |
-| **[tic-toe-game](https://github.com/sharmaa-abhi/tic-toe-game)** | `JavaScript` | Interactive Tic-Tac-Toe web application. | ⭐ 0 \| 🍴 0 |
-| **[Cpp-topics](https://github.com/sharmaa-abhi/Cpp-topics)** | `C++` | Core C++ algorithms, data structures & concepts repository. | ⭐ 0 \| 🍴 0 |
-| **[Inflow](https://github.com/sharmaa-abhi/Inflow)** | `JavaScript` | Web application for workflow management. | ⭐ 0 \| 🍴 0 |
 
 <br />
 <hr />
@@ -148,26 +128,6 @@
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
   <img src="https://www.gitskins.com/api/section/heatmap?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" width="820" alt="sharmaa-abhi heatmap" />
-</picture>
-
-<br />
-<br />
-
-<!-- Small Green Contribution Grid SVG -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" />
-  <img alt="github-contribution-grid-snake" src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" width="820" />
-</picture>
-
-<br />
-<br />
-
-<!-- Snake Animation SVG -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-snake.svg" width="820" />
 </picture>
 
 <br />
