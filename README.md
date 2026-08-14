@@ -109,10 +109,14 @@
 
 <h2>📊 GitHub Statistics</h2>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
-  <img src="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal" alt="GitHub Stats" width="820" />
-</picture>
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=sharmaa-abhi&show_icons=true&theme=dark&bg_color=0d1117&title_color=22c55e&icon_color=22c55e&text_color=c9d1d9&border_color=22c55e&count_private=true" height="170" alt="sharmaa-abhi's GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sharmaa-abhi&theme=dark&bg_color=0d1117&title_color=22c55e&text_color=c9d1d9&border_color=22c55e&layout=compact" height="170" alt="Top Languages" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sharmaa-abhi&theme=dark&background=0d1117&border=22c55e&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakNum=22c55e&sideNums=22c55e&sideTitle=c9d1d9&dates=8b949e" width="820" alt="GitHub Streak Stats" />
+</p>
 
 </div>
 
