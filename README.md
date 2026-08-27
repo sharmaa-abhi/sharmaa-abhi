@@ -4,14 +4,18 @@
 
   <br />
   <br />
+  <br />
 
+  
   <img src="https://avatars.githubusercontent.com/u/227398936?u=aced0de9d269a32facd3a3e67d6fa93160ca5aba&v=4" width="130" style="border-radius: 50%; border: 3px solid #22C55E;" alt="Abhishek Sharma" />
 
+  <br />
   <br />
   <br />
 
   <img src="./terminal.svg" alt="GitSkins Terminal Banner - ABHISHEK SHARMA" width="820" />
 
+  <br />
   <br />
   <br />
 
