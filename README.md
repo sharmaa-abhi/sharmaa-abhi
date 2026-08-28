@@ -115,7 +115,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
-  <img src="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal" alt="GitHub Stats" width="820" />
+  <img src="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" alt="GitHub Stats" width="820" />
 </picture>
 
 </div>
@@ -137,8 +137,21 @@
 <br />
 <br />
 
+<!-- Snake Contribution Grid Animation SVG -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" />
+  <img src="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake-dark.svg" alt="Contribution Snake Animation" width="820" />
+</picture>
+
+<br />
+<br />
+
 <!-- Green Contribution Activity Graph SVG -->
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true" width="820" alt="Green Activity Graph SVG" />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true&bg_color=00000000" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true&bg_color=00000000" width="820" alt="Green Activity Graph SVG" />
+</picture>
 
 </div>
 
@@ -153,7 +166,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/social?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
-  <img src="https://www.gitskins.com/api/section/social?username=sharmaa-abhi&theme=github-dark&style=terminal" alt="sharmaa-abhi social links" width="820" />
+  <img src="https://www.gitskins.com/api/section/social?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" alt="sharmaa-abhi social links" width="820" />
 </picture>
 
 <br />
