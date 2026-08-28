@@ -103,7 +103,7 @@ function firePlayerShot() {
 
 function fireEnemyShot(enemy) {
   state.enemyBullets.push({
-    x: enemy.x,
+    x: enemy.x + enemy.width / 2,
     y: enemy.y + enemy.height / 2,
     radius: 5,
     speed: 4 + state.level * 0.25,
@@ -126,15 +126,15 @@ function createParticles(x, y, color, amount = 14) {
   }
 }
 
-function handleInput() {
+function handleInput(deltaFactor = 1) {
   const moveLeft = keys.ArrowLeft || keys.KeyA;
   const moveRight = keys.ArrowRight || keys.KeyD;
 
   if (moveLeft && !moveRight) {
-    player.x -= player.speed;
+    player.x -= player.speed * deltaFactor;
   }
   if (moveRight && !moveLeft) {
-    player.x += player.speed;
+    player.x += player.speed * deltaFactor;
   }
 
   player.x = clamp(player.x, 28, canvas.width - 28);
@@ -144,7 +144,7 @@ function handleInput() {
   }
 }
 
-function updateGame(delta) {
+function updateGame(delta, deltaFactor = 1) {
   if (!state.started || state.gameOver) return;
 
   state.level = 1 + Math.floor(state.score / 120);
@@ -164,16 +164,16 @@ function updateGame(delta) {
   }
 
   state.playerBullets.forEach((bullet) => {
-    bullet.y -= bullet.speed;
+    bullet.y -= bullet.speed * deltaFactor;
   });
 
   state.enemyBullets.forEach((bullet) => {
-    bullet.y += bullet.speed;
+    bullet.y += bullet.speed * deltaFactor;
   });
 
   state.enemies.forEach((enemy) => {
-    enemy.y += enemy.speed * (delta / 16.67);
-    enemy.x += Math.sin((enemy.y + enemy.width) * 0.04) * enemy.drift * (delta / 16.67);
+    enemy.y += enemy.speed * deltaFactor;
+    enemy.x += Math.sin((enemy.y + enemy.width) * 0.04) * enemy.drift * deltaFactor;
     enemy.fireCooldown -= delta;
     if (enemy.fireCooldown <= 0) {
       fireEnemyShot(enemy);
@@ -182,8 +182,8 @@ function updateGame(delta) {
   });
 
   state.particles.forEach((particle) => {
-    particle.x += particle.vx * (delta / 16.67);
-    particle.y += particle.vy * (delta / 16.67);
+    particle.x += particle.vx * deltaFactor;
+    particle.y += particle.vy * deltaFactor;
     particle.life -= delta * 0.06;
   });
 
@@ -197,10 +197,10 @@ function updateGame(delta) {
     for (let j = state.enemies.length - 1; j >= 0; j -= 1) {
       const enemy = state.enemies[j];
       if (
-        bullet.x > enemy.x &&
-        bullet.x < enemy.x + enemy.width &&
-        bullet.y > enemy.y &&
-        bullet.y < enemy.y + enemy.height
+        bullet.x + bullet.radius > enemy.x &&
+        bullet.x - bullet.radius < enemy.x + enemy.width &&
+        bullet.y + bullet.radius > enemy.y &&
+        bullet.y - bullet.radius < enemy.y + enemy.height
       ) {
         enemy.health -= bullet.damage;
         state.playerBullets.splice(i, 1);
@@ -248,7 +248,7 @@ function updateGame(delta) {
     if (enemy.y + enemy.height > canvas.height) {
       state.enemies.splice(i, 1);
       state.health -= 12;
-      createParticles(enemy.x, enemy.y, '#f472b6', 18);
+      createParticles(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, '#f472b6', 18);
       updateHud();
       if (state.health <= 0) {
         state.gameOver = true;
@@ -355,11 +355,12 @@ function draw() {
 }
 
 function gameLoop(timestamp) {
-  const delta = timestamp - (state.lastTime || timestamp);
+  const delta = Math.min(timestamp - (state.lastTime || timestamp), 100);
   state.lastTime = timestamp;
+  const deltaFactor = Math.min(delta / 16.67, 3);
 
-  handleInput();
-  updateGame(delta);
+  handleInput(deltaFactor);
+  updateGame(delta, deltaFactor);
   draw();
 
   requestAnimationFrame(gameLoop);
@@ -383,9 +384,11 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
   }
 
-  if (event.code === 'Enter' && state.gameOver) {
-    resetOverlayCopy();
-    resetGame();
+  if (event.code === 'Enter' || (event.code === 'Space' && !state.started)) {
+    if (!state.started || state.gameOver) {
+      resetOverlayCopy();
+      resetGame();
+    }
   }
 });
 
