@@ -147,10 +147,10 @@
 <br />
 <br />
 
-<!-- Green Contribution Activity Graph SVG -->
+<!-- Green Contribution Activity & Streak Stats SVG -->
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true&bg_color=00000000" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=sharmaa-abhi&theme=github-compact&color=22c55e&line=22c55e&point=ffffff&area=true&hide_border=true&bg_color=00000000" width="820" alt="Green Activity Graph SVG" />
+  <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=0d1117&border=22c55e&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=12" />
+  <img src="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=0d1117&border=22c55e&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=12" width="820" alt="GitHub Contribution Streak & Activity Graph" />
 </picture>
 
 </div>
