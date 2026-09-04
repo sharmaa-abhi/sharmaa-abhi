@@ -3,39 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Star Defender</title>
+    <meta name="theme-color" content="#0b0d0c" />
+    <title>Star Defender // Mission Control</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main class="game-shell">
-      <header class="hud" aria-label="Game HUD">
-        <div class="hud-item">
-          <span class="label">Score</span>
-          <strong id="score">0</strong>
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">+</span>
+          <div>
+            <p class="kicker">Orbital defense network</p>
+            <p class="brand-name">STAR<span> //</span>DEFENDER</p>
+          </div>
         </div>
-        <div class="hud-item">
-          <span class="label">Health</span>
-          <strong id="health">100</strong>
-        </div>
-        <div class="hud-item">
-          <span class="label">Level</span>
-          <strong id="level">1</strong>
-        </div>
+        <div class="mission-status"><span class="status-dot"></span> Mission channel <strong>01</strong></div>
       </header>
 
-      <canvas id="gameCanvas" width="960" height="600" aria-label="Shooter game canvas"></canvas>
+      <section class="game-stage">
+        <aside class="side-rail" aria-label="Mission telemetry">
+          <p class="rail-label">Live telemetry</p>
+          <div class="hud-item">
+            <span class="label">Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="hud-item health-readout">
+            <span class="label">Hull integrity</span>
+            <strong><span id="health">100</span><small>%</small></strong>
+          </div>
+          <div class="hud-item">
+            <span class="label">Sector</span>
+            <strong id="level">1</strong>
+          </div>
+          <div class="rail-rule"></div>
+          <p class="rail-label">Pilot protocol</p>
+          <p class="rail-copy">Keep moving.<br />Keep firing.</p>
+        </aside>
+
+        <div class="canvas-wrap">
+          <div class="canvas-caption"><span>SECTOR 7G</span><span>NO SIGNAL LOSS</span></div>
+          <canvas id="gameCanvas" width="960" height="600" aria-label="Shooter game canvas"></canvas>
+        </div>
+      </section>
 
       <div class="overlay" id="overlay">
         <div class="panel">
-          <p class="eyebrow">Arcade Defense</p>
-          <h1>Star Defender</h1>
-          <p class="subtitle">Hold the line against incoming raiders.</p>
-          <ul>
-            <li>Move: A/D or Arrow keys</li>
-            <li>Shoot: Space or mouse click</li>
-            <li>Restart: Enter after defeat</li>
-          </ul>
-          <button id="startButton" type="button">Start Mission</button>
+          <div class="panel-topline"><span>Transmission 001</span><span>Ready</span></div>
+          <p class="eyebrow">Outer rim // incoming</p>
+          <h1>Hold the<br /><em>line.</em></h1>
+          <p class="subtitle">Raiders are entering your orbit. The next move is yours.</p>
+          <div class="control-list">
+            <div><span class="control-key">A / D</span><span>move craft</span></div>
+            <div><span class="control-key">SPACE</span><span>fire cannons</span></div>
+            <div><span class="control-key">ENTER</span><span>restart mission</span></div>
+          </div>
+          <button id="startButton" type="button"><span>Start Mission</span><b aria-hidden="true">-&gt;</b></button>
+          <p class="panel-foot">Click canvas to fire // no autopilot</p>
         </div>
       </div>
     </main>
