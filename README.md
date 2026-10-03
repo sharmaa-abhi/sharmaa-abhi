@@ -68,16 +68,6 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <div align="center">
 
   <img src="./tech-stack.svg" alt="Abhishek's No Cap Tech Arsenal" width="840" />
-
-  <br />
-
-  <!-- DYNAMIC SKILLICONS DOCK -->
-  <p align="center">
-    <a href="https://skillicons.dev">
-      <img src="https://skillicons.dev/icons?i=ts,js,py,cpp,c,html,css,mysql,react,nextjs,vite,tailwind,nodejs,git,github,githubactions,vscode&theme=dark" alt="Tech Stack Badges" />
-    </a>
-  </p>
-
 </div>
 
 <br />
