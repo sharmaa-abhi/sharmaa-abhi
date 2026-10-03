@@ -84,14 +84,19 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <hr />
 <br />
 
-<!-- GITHUB ACTIVITY & METRICS -->
+<!-- GITHUB ACTIVITY & METRICS (GEN-Z BENTO) -->
 <div align="center">
 
-  <h3>📊 Activity & Contribution Telemetry</h3>
+  <p>
+    <img src="https://img.shields.io/badge/PROOF%20OF%20WORK-THE%20GREEN%20SQUARE%20GRINDSET%20🟩-22c55e?style=for-the-badge&logo=github&logoColor=white" alt="Proof of Work" />
+  </p>
+
+  <h3>⚡ Proof of Work // The Green Square Grindset 🟩</h3>
+  <p><em>Certified commit demon • Never pushes broken code fr fr • Zero excuses • Daily telemetry</em></p>
 
   <br />
 
-  <!-- Snake Animation -->
+  <!-- Snake Contribution Hero -->
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sharmaa-abhi/sharmaa-abhi/output/github-contribution-grid-snake.svg" />
@@ -100,16 +105,16 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 
   <br /><br />
 
-  <!-- Streak Stats Card -->
-  <img src="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=0d1117&border=22c55e&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=12" width="840" alt="GitHub Streak Activity" />
-
-  <br /><br />
-
-  <!-- GitHub Statistics Card -->
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=light" />
-    <img src="https://www.gitskins.com/api/section/stats?username=sharmaa-abhi&theme=github-dark&style=terminal&mode=dark" alt="GitHub Stats Summary" width="840" />
-  </picture>
+  <!-- SIDE-BY-SIDE NEON GLASS BENTO METRICS -->
+  <p align="center">
+    <a href="https://github.com/sharmaa-abhi">
+      <img src="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=07090e&border=22c55e&stroke=22c55e&ring=06b6d4&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=16" width="414" alt="GitHub Streak Activity" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/sharmaa-abhi">
+      <img src="https://github-readme-stats.vercel.app/api?username=sharmaa-abhi&show_icons=true&theme=dark&bg_color=07090e&title_color=22c55e&text_color=c9d1d9&icon_color=06b6d4&border_color=06b6d4&border_radius=16&hide_border=false" width="414" alt="GitHub Stats Summary" />
+    </a>
+  </p>
 
 </div>
 
