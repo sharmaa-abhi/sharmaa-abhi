@@ -1,39 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes pulse-dot {
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.55; transform: scale(1.08); }
+      }
+      @keyframes live-blink {
         0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.85); }
+        50% { opacity: 0.3; transform: scale(0.85); }
       }
-      @keyframes border-shimmer {
-        0% { stroke-dashoffset: 0; }
-        100% { stroke-dashoffset: 60; }
-      }
-      @keyframes aura-glow {
-        0%, 100% { opacity: 0.22; }
-        50% { opacity: 0.38; }
+      @keyframes float-orb {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
       }
 
-      .canvas-bg { fill: #0a0d14; stroke: #21262d; stroke-width: 1.5; rx: 20px; }
-      .bento-card {
-        fill: #11151f;
-        stroke: #262c36;
+      .canvas-bg { fill: #07090e; stroke: #1e2430; stroke-width: 1.5; rx: 24px; }
+      
+      /* Glass Card Styles */
+      .glass-panel {
+        fill: #0c1019;
+        fill-opacity: 0.62;
+        stroke: url(#glass-panel-border);
         stroke-width: 1.2;
-        rx: 16px;
+        rx: 18px;
+        filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.45));
       }
-      .bento-card-highlight {
-        fill: #131926;
-        stroke: #388bfd44;
-        stroke-width: 1.2;
-        rx: 16px;
-      }
-      .item-pill {
-        fill: #161b26;
-        stroke: #262d3d;
+      .glass-pill {
+        fill: #151b28;
+        fill-opacity: 0.70;
+        stroke: url(#glass-pill-border);
         stroke-width: 1;
         rx: 12px;
       }
-      
+      .glass-icon-box {
+        rx: 8px;
+      }
+
       .font-mono {
         font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       }
@@ -41,37 +43,37 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
       }
 
-      .title-gradient {
+      .main-title {
         font-family: 'JetBrains Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 800;
-        font-size: 26px;
+        font-size: 24px;
         letter-spacing: -0.5px;
-        fill: url(#header-grad);
+        fill: url(#header-gradient);
       }
-      .section-title {
+      .section-heading {
         font-family: 'JetBrains Mono', monospace;
         font-weight: 700;
-        font-size: 15px;
-        letter-spacing: 0.2px;
+        font-size: 14px;
+        letter-spacing: 0.3px;
         fill: #f0f6fc;
       }
-      .section-subtitle {
+      .section-sub {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 11.5px;
         fill: #8b949e;
       }
-      .item-name {
+      .pill-name {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 700;
         font-size: 13px;
-        fill: #e6edf3;
+        fill: #ffffff;
       }
-      .item-desc {
+      .pill-vibe {
         font-family: 'JetBrains Mono', monospace;
         font-weight: 500;
         font-size: 10px;
-        fill: #7d8590;
+        fill: #8b949e;
       }
       .badge-tag {
         font-family: 'JetBrains Mono', monospace;
@@ -79,422 +81,352 @@
         font-size: 9px;
         letter-spacing: 0.4px;
       }
-      .stat-label {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 600;
-        font-size: 12px;
-        fill: #c9d1d9;
-      }
-      .stat-val {
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        font-size: 12px;
-        text-anchor: end;
-      }
+
       .live-dot {
-        animation: pulse-dot 1.8s ease-in-out infinite;
+        animation: live-blink 1.8s ease-in-out infinite;
       }
-      .glow-pulse {
-        animation: aura-glow 4s ease-in-out infinite;
+      .orb-1 {
+        animation: pulse-glow 6s ease-in-out infinite, float-orb 7s ease-in-out infinite;
+      }
+      .orb-2 {
+        animation: pulse-glow 7s ease-in-out infinite 1s, float-orb 8s ease-in-out infinite 0.5s;
+      }
+      .orb-3 {
+        animation: pulse-glow 6.5s ease-in-out infinite 2s;
       }
     </style>
 
-    <!-- Gradients -->
-    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <!-- Glass Gradients -->
+    <linearGradient id="header-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#22c55e" />
       <stop offset="45%" stop-color="#06b6d4" />
-      <stop offset="90%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#c084fc" />
     </linearGradient>
 
-    <linearGradient id="fire-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f59e0b" />
-      <stop offset="100%" stop-color="#ef4444" />
+    <linearGradient id="glass-panel-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
+      <stop offset="35%" stop-color="#388bfd" stop-opacity="0.18" />
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.16" />
     </linearGradient>
 
-    <linearGradient id="progress-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#22c55e" />
-      <stop offset="50%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#3b82f6" />
+    <linearGradient id="glass-pill-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.38" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.20" />
     </linearGradient>
 
-    <radialGradient id="ambient-top-left" cx="20%" cy="10%" r="50%">
-      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.18" />
-      <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
-    </radialGradient>
+    <linearGradient id="specular-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
 
-    <radialGradient id="ambient-bottom-right" cx="80%" cy="90%" r="50%">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
-    </radialGradient>
+    <!-- Deep Blur Filter for Glowing Glass Orbs -->
+    <filter id="glass-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="80" />
+    </filter>
 
-    <radialGradient id="ambient-card-glow" cx="50%" cy="0%" r="60%">
-      <stop offset="0%" stop-color="#388bfd" stop-opacity="0.12" />
-      <stop offset="100%" stop-color="#388bfd" stop-opacity="0" />
-    </radialGradient>
-
-    <!-- Dot Pattern -->
-    <pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.1" fill="#30363d" opacity="0.38" />
+    <!-- Subtle Dot Grid Matrix -->
+    <pattern id="dot-matrix" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#30363d" opacity="0.32" />
     </pattern>
+
+    <!-- Brand Color Gradient Accents -->
+    <linearGradient id="vite-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#41D1FF" />
+      <stop offset="50%" stop-color="#BD34FE" />
+      <stop offset="100%" stop-color="#FFDD35" />
+    </linearGradient>
   </defs>
 
-  <!-- Canvas Outer Shell -->
-  <rect class="canvas-bg" x="1" y="1" width="1198" height="858" />
-  <rect class="glow-pulse" x="1" y="1" width="600" height="400" fill="url(#ambient-top-left)" rx="20" />
-  <rect class="glow-pulse" x="600" y="450" width="598" height="408" fill="url(#ambient-bottom-right)" rx="20" />
-  <rect x="2" y="2" width="1196" height="856" fill="url(#dot-grid)" rx="19" pointer-events="none" />
+  <!-- Canvas Outer Background -->
+  <rect class="canvas-bg" x="1" y="1" width="1198" height="778" />
+
+  <!-- ==================== FROSTED GLASS BACKGROUND ORBS ==================== -->
+  <g pointer-events="none">
+    <!-- Top-Left Neon Purple/Violet Orb -->
+    <circle class="orb-1" cx="160" cy="180" r="150" fill="#8b5cf6" opacity="0.32" filter="url(#glass-glow)" />
+    <!-- Top-Right Neon Cyan Orb -->
+    <circle class="orb-2" cx="1040" cy="220" r="160" fill="#06b6d4" opacity="0.30" filter="url(#glass-glow)" />
+    <!-- Center-Bottom Neon Emerald Orb -->
+    <circle class="orb-3" cx="580" cy="560" r="170" fill="#10b981" opacity="0.25" filter="url(#glass-glow)" />
+    <!-- Mid-Right Neon Sunset Pink Orb -->
+    <circle class="orb-1" cx="920" cy="530" r="130" fill="#ec4899" opacity="0.22" filter="url(#glass-glow)" />
+    <!-- Mid-Left Amber Gold Orb -->
+    <circle class="orb-2" cx="280" cy="480" r="140" fill="#f59e0b" opacity="0.20" filter="url(#glass-glow)" />
+  </g>
+
+  <!-- Dot Matrix Grid on top of orbs for tactile glass texture -->
+  <rect x="2" y="2" width="1196" height="776" fill="url(#dot-matrix)" rx="23" pointer-events="none" />
 
   <!-- ==================== HEADER BAR ==================== -->
-  <g transform="translate(36, 32)">
+  <g transform="translate(36, 28)">
     <!-- Pill Badge -->
-    <rect x="0" y="0" width="290" height="24" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <rect x="0" y="0" width="270" height="24" rx="12" fill="#161b22" fill-opacity="0.8" stroke="#30363d" stroke-width="1" />
     <circle class="live-dot" cx="12" cy="12" r="4.5" fill="#22c55e" />
-    <text class="font-mono badge-tag" x="24" y="15.5" fill="#22c55e">NO CAP ARSENAL // TECH STACK v2.0</text>
+    <text class="font-mono badge-tag" x="24" y="15.5" fill="#22c55e">NO CAP ARSENAL // GLASSMORPHISM</text>
 
     <!-- Main Title -->
-    <text class="title-gradient" x="0" y="58">WEAPONS OF MASS CREATION ⚡</text>
+    <text class="main-title" x="0" y="55">🛠️ TECHNICAL ARSENAL ⚡</text>
 
     <!-- Subtitle -->
-    <text class="font-sans section-subtitle" x="0" y="80">
-      <tspan fill="#f59e0b" font-weight="600">100% Rizz</tspan> • <tspan fill="#e6edf3">Zero Mid Code</tspan> • Shipped to Production at Mach 10 Speed fr fr
+    <text class="font-sans section-sub" x="0" y="74">
+      <tspan fill="#f59e0b" font-weight="600">100% Rizz</tspan> • <tspan fill="#ffffff">Zero Mid Code</tspan> • Frosted Glassmorphism Cockpit • Shipped at Mach 10 Speed fr fr
     </text>
 
-    <!-- Top Right Status Box -->
-    <g transform="translate(860, 2)">
-      <rect x="0" y="0" width="268" height="66" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1" />
-      <circle class="live-dot" cx="18" cy="24" r="5" fill="#22c55e" />
-      <text class="font-mono badge-tag" x="32" y="22" fill="#8b949e">ENGINEERING STATUS</text>
-      <text class="font-mono" x="32" y="38" font-size="12" font-weight="700" fill="#22c55e">24/7 COOKING MODE</text>
-      <text class="font-mono badge-tag" x="18" y="55" fill="#06b6d4">🔒 STATUS: PERPETUALLY LOCKED IN</text>
+    <!-- Status Chip Right -->
+    <g transform="translate(860, 4)">
+      <rect x="0" y="0" width="268" height="58" rx="14" fill="#111622" fill-opacity="0.75" stroke="url(#glass-pill-border)" stroke-width="1" />
+      <circle class="live-dot" cx="18" cy="20" r="5" fill="#22c55e" />
+      <text class="font-mono badge-tag" x="32" y="18" fill="#8b949e">ENGINEERING TELEMETRY</text>
+      <text class="font-mono" x="32" y="34" font-size="12" font-weight="700" fill="#22c55e">24/7 COOKING MODE</text>
+      <text class="font-mono badge-tag" x="18" y="49" fill="#06b6d4">🔒 STATUS: LOCKED IN (NO CAP)</text>
     </g>
   </g>
 
-  <!-- ==================== BENTO ROW 1 ==================== -->
+  <!-- ==================== SECTION 1: LANGUAGES & CORE ==================== -->
+  <g transform="translate(36, 126)">
+    <!-- Frosted Glass Panel Container -->
+    <rect class="glass-panel" x="0" y="0" width="1128" height="206" />
+    <!-- Specular highlight bar on glass top -->
+    <rect x="20" y="1" width="1088" height="1.5" fill="url(#specular-line)" />
 
-  <!-- CARD 1: THINGS I COOK WITH (Frontend & Creative Stack) -->
-  <g transform="translate(36, 140)">
-    <rect class="bento-card-highlight" x="0" y="0" width="730" height="340" />
-    <rect x="0" y="0" width="730" height="90" fill="url(#ambient-card-glow)" rx="16" />
+    <!-- Section Header -->
+    <text class="section-heading" x="24" y="32">🗣️ LANGUAGES &amp; CORE</text>
+    <text class="font-mono badge-tag" x="205" y="30" fill="#c084fc">[MACHINE &amp; SYSTEM DIALECTS]</text>
+    <text class="font-sans section-sub" x="24" y="49">Talking to compilers with pure audacity and type-safe confidence</text>
 
-    <!-- Card Header -->
-    <text class="section-title" x="24" y="36">🍳 THINGS I COOK WITH</text>
-    <text class="font-mono badge-tag" x="225" y="34" fill="#06b6d4" opacity="0.9">[FRONTEND &amp; CREATIVE MOTION]</text>
-    <text class="font-sans section-subtitle" x="24" y="56">Crafting peak UI/UX with smooth 120 FPS butter motion &amp; responsive rizz</text>
+    <!-- 8 Glass Tech Pills (4 Cols x 2 Rows) -->
+    <!-- Col width: 260px, Gap: 12px. Row height: 56px, Gap: 10px -->
+    <!-- Row 1: JavaScript, TypeScript, Python, C++ -->
 
-    <!-- Items Grid (Row 1: Next.js, React, Vite) -->
-    <!-- 1. Next.js -->
-    <g transform="translate(24, 76)">
-      <rect class="item-pill" x="0" y="0" width="216" height="114" />
-      <rect x="12" y="14" width="40" height="40" rx="10" fill="#000000" stroke="#30363d" />
-      <!-- Next.js N Logo -->
-      <path d="M28 42 L28 26 L42 44 M38 26 L38 36" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
-      <circle cx="43" cy="27" r="1.5" fill="#06b6d4" />
-
-      <text class="item-name" x="62" y="30">Next.js</text>
-      <text class="font-mono badge-tag" x="62" y="44" fill="#ffffff" opacity="0.6">FULL-STACK ENGINE</text>
-      <text class="font-sans item-desc" x="14" y="74">⚡ Server Actions &amp; App Router</text>
-      <text class="font-sans item-desc" x="14" y="90">🚀 Vercel-grade speed demon</text>
-      <rect x="14" y="100" width="188" height="2" rx="1" fill="#ffffff" opacity="0.15" />
+    <!-- 1. JavaScript -->
+    <g transform="translate(24, 66)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#F7DF1E" />
+      <text class="font-mono" x="28" y="33" fill="#000000" font-size="16" font-weight="800" text-anchor="middle">JS</text>
+      <text class="pill-name" x="56" y="27">JavaScript</text>
+      <text class="font-mono pill-vibe" x="56" y="43">The chaotic monarch 👑</text>
     </g>
 
-    <!-- 2. React -->
-    <g transform="translate(256, 76)">
-      <rect class="item-pill" x="0" y="0" width="216" height="114" />
-      <rect x="12" y="14" width="40" height="40" rx="10" fill="#0c1d2e" stroke="#00d8ff33" />
-      <!-- React Atom Logo -->
-      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" />
-      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" transform="rotate(60 32 34)" />
-      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" transform="rotate(120 32 34)" />
-      <circle cx="32" cy="34" r="2.2" fill="#00D8FF" />
+    <!-- 2. TypeScript -->
+    <g transform="translate(296, 66)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#3178C6" />
+      <text class="font-mono" x="28" y="33" fill="#ffffff" font-size="16" font-weight="800" text-anchor="middle">TS</text>
+      <text class="pill-name" x="56" y="27">TypeScript</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#60a5fa">Types saved my sanity 🛡️</text>
+    </g>
 
-      <text class="item-name" x="62" y="30">React</text>
-      <text class="font-mono badge-tag" x="62" y="44" fill="#00D8FF">COMPONENT RIZZ</text>
-      <text class="font-sans item-desc" x="14" y="74">🧩 Clean custom hooks &amp; state</text>
-      <text class="font-sans item-desc" x="14" y="90">✨ Seamless reactive architecture</text>
-      <rect x="14" y="100" width="188" height="2" rx="1" fill="#00D8FF" opacity="0.25" />
+    <!-- 3. Python -->
+    <g transform="translate(568, 66)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#1b2a3a" stroke="#3776AB55" />
+      <!-- Python snake glyph -->
+      <path d="M22 20 C22 16 30 16 30 20 L30 25 L24 25 C20 25 20 29 20 29" stroke="#3776AB" stroke-width="2" fill="none" stroke-linecap="round" />
+      <circle cx="25" cy="18" r="1.1" fill="#3776AB" />
+      <path d="M34 36 C34 40 26 40 26 36 L26 31 L32 31 C36 31 36 27 36 27" stroke="#FFD43B" stroke-width="2" fill="none" stroke-linecap="round" />
+      <circle cx="31" cy="38" r="1.1" fill="#FFD43B" />
+      <text class="pill-name" x="56" y="27">Python</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#facc15">Script &amp; AI sorcery 🐍</text>
+    </g>
+
+    <!-- 4. C++ -->
+    <g transform="translate(840, 66)">
+      <rect class="glass-pill" x="0" y="0" width="264" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#00599C" />
+      <text class="font-mono" x="28" y="33" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">C++</text>
+      <text class="pill-name" x="56" y="27">C++</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#38bdf8">Raw speed demon 🏎️</text>
+    </g>
+
+    <!-- Row 2: C, HTML5, CSS3, SQL -->
+
+    <!-- 5. C -->
+    <g transform="translate(24, 132)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#1b2a40" stroke="#659AD244" />
+      <text class="font-mono" x="28" y="34" fill="#659AD2" font-size="17" font-weight="800" text-anchor="middle">C</text>
+      <text class="pill-name" x="56" y="27">C</text>
+      <text class="font-mono pill-vibe" x="56" y="43">Memory boss &amp; pointers 🧠</text>
+    </g>
+
+    <!-- 6. HTML5 -->
+    <g transform="translate(296, 132)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#E34F26" />
+      <text class="font-mono" x="28" y="33" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">&lt;/&gt;</text>
+      <text class="pill-name" x="56" y="27">HTML5</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#fb923c">Semantic bedrock 🏗️</text>
+    </g>
+
+    <!-- 7. CSS3 -->
+    <g transform="translate(568, 132)">
+      <rect class="glass-pill" x="0" y="0" width="260" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#1572B6" />
+      <text class="font-mono" x="28" y="33" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">{#}</text>
+      <text class="pill-name" x="56" y="27">CSS3</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#38bdf8">Visual aesthetic drip 💎</text>
+    </g>
+
+    <!-- 8. SQL -->
+    <g transform="translate(840, 132)">
+      <rect class="glass-pill" x="0" y="0" width="264" height="56" />
+      <rect x="10" y="10" width="36" height="36" rx="8" fill="#0e2a36" stroke="#00758F44" />
+      <!-- Database cylinder -->
+      <ellipse cx="28" cy="21" rx="8" ry="3" fill="none" stroke="#00d8ff" stroke-width="1.6" />
+      <path d="M20 21 L20 32 C20 35 36 35 36 32 L36 21" fill="none" stroke="#00d8ff" stroke-width="1.6" />
+      <path d="M20 26 C20 29 36 29 36 26" fill="none" stroke="#00d8ff" stroke-width="1.6" />
+      <text class="pill-name" x="56" y="27">SQL</text>
+      <text class="font-mono pill-vibe" x="56" y="43" fill="#2dd4bf">Query &amp; data whisperer 💾</text>
+    </g>
+  </g>
+
+  <!-- ==================== SECTION 2: FRAMEWORKS & FRONTEND ==================== -->
+  <g transform="translate(36, 348)">
+    <!-- Frosted Glass Panel Container -->
+    <rect class="glass-panel" x="0" y="0" width="1128" height="142" />
+    <rect x="20" y="1" width="1088" height="1.5" fill="url(#specular-line)" />
+
+    <!-- Section Header -->
+    <text class="section-heading" x="24" y="32">⚡ FRAMEWORKS &amp; FRONTEND</text>
+    <text class="font-mono badge-tag" x="260" y="30" fill="#06b6d4">[COOKING PEAK UI/UX]</text>
+    <text class="font-sans section-sub" x="24" y="49">Crafting 120 FPS butter-smooth reactive interfaces with unmatchable component rizz</text>
+
+    <!-- 5 Glass Tech Pills (Col width: 208px, Gap: 12px) -->
+    <!-- 1. React -->
+    <g transform="translate(24, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#08212e" stroke="#00d8ff33" />
+      <!-- React Atom -->
+      <ellipse cx="28" cy="29" rx="10" ry="3.8" fill="none" stroke="#00D8FF" stroke-width="1.3" />
+      <ellipse cx="28" cy="29" rx="10" ry="3.8" fill="none" stroke="#00D8FF" stroke-width="1.3" transform="rotate(60 28 29)" />
+      <ellipse cx="28" cy="29" rx="10" ry="3.8" fill="none" stroke="#00D8FF" stroke-width="1.3" transform="rotate(120 28 29)" />
+      <circle cx="28" cy="29" r="1.8" fill="#00D8FF" />
+      <text class="pill-name" x="54" y="27">React</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#38bdf8">Component rizz 🧩</text>
+    </g>
+
+    <!-- 2. Next.js -->
+    <g transform="translate(244, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#000000" stroke="#30363d" />
+      <path d="M23 37 L23 21 L35 37 M32 21 L32 30" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="36" cy="22" r="1.4" fill="#06b6d4" />
+      <text class="pill-name" x="54" y="27">Next.js</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#ffffff" opacity="0.8">Full-stack speed 🚀</text>
     </g>
 
     <!-- 3. Vite -->
-    <g transform="translate(488, 76)">
-      <rect class="item-pill" x="0" y="0" width="218" height="114" />
-      <rect x="12" y="14" width="40" height="40" rx="10" fill="#1c1630" stroke="#bd34fe33" />
-      <!-- Vite Logo Lightning -->
-      <path d="M22 24 L38 21 L35 34 L43 34 L26 47 L29 36 L22 36 Z" fill="url(#vite-grad)" />
-      <linearGradient id="vite-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#41D1FF" />
-        <stop offset="50%" stop-color="#BD34FE" />
-        <stop offset="100%" stop-color="#FFDD35" />
-      </linearGradient>
-
-      <text class="item-name" x="62" y="30">Vite</text>
-      <text class="font-mono badge-tag" x="62" y="44" fill="#bd34fe">INSTANT HMR</text>
-      <text class="font-sans item-desc" x="14" y="74">⚡ 0.001s instant reloads</text>
-      <text class="font-sans item-desc" x="14" y="90">🔥 No cap bundling speed</text>
-      <rect x="14" y="100" width="190" height="2" rx="1" fill="#bd34fe" opacity="0.25" />
+    <g transform="translate(464, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#1c1630" stroke="#bd34fe33" />
+      <path d="M20 22 L32 19 L29 30 L36 30 L23 40 L25 31 L20 31 Z" fill="url(#vite-grad)" />
+      <text class="pill-name" x="54" y="27">Vite</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#c084fc">Instant HMR ⚡</text>
     </g>
 
-    <!-- Row 2: TailwindCSS & GSAP -->
     <!-- 4. TailwindCSS -->
-    <g transform="translate(24, 204)">
-      <rect class="item-pill" x="0" y="0" width="332" height="114" />
-      <rect x="14" y="14" width="40" height="40" rx="10" fill="#0a222c" stroke="#14c6b733" />
-      <!-- Tailwind Wave Logo -->
-      <path d="M24 34 C26 29 29 27 34 27 C39 27 40 31 43 32 C46 33 47 32 48 30 C47 35 44 37 39 37 C34 37 33 33 30 32 C27 31 25 32 24 34 Z M18 41 C20 36 23 34 28 34 C33 34 34 38 37 39 C40 40 41 39 42 37 C41 42 38 44 33 44 C28 44 27 40 24 39 C21 38 19 39 18 41 Z" fill="#14C6B7" />
-
-      <text class="item-name" x="66" y="30">TailwindCSS</text>
-      <text class="font-mono badge-tag" x="66" y="44" fill="#14C6B7">LIGHTSPEED STYLING</text>
-      <text class="font-sans item-desc" x="14" y="74">🎨 Pixel-perfect utility flow, zero CSS spaghetti</text>
-      <text class="font-sans item-desc" x="14" y="90">📱 Responsive-first dark glassmorphic layouts</text>
-      <rect x="14" y="100" width="304" height="2" rx="1" fill="#14C6B7" opacity="0.25" />
+    <g transform="translate(684, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#08222b" stroke="#06b6d433" />
+      <path d="M20 29 C22 25 24 23 28 23 C32 23 33 26 35 27 C37 28 38 27 39 25 C38 29 36 31 32 31 C28 31 27 28 25 27 C23 26 21 27 20 29 Z M16 35 C18 31 20 29 24 29 C28 29 29 32 31 33 C33 34 34 33 35 31 C34 35 32 37 28 37 C24 37 23 34 21 33 C19 32 17 33 16 35 Z" fill="#06B6D4" />
+      <text class="pill-name" x="54" y="27">TailwindCSS</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#22d3ee">Lightspeed styling 🎨</text>
     </g>
 
     <!-- 5. GSAP -->
-    <g transform="translate(372, 204)">
-      <rect class="item-pill" x="0" y="0" width="334" height="114" />
-      <rect x="14" y="14" width="40" height="40" rx="10" fill="#182b0e" stroke="#88ce0233" />
-      <!-- GSAP Green Running Badge / Spark -->
-      <circle cx="34" cy="26" r="3.5" fill="#88CE02" />
-      <path d="M26 44 L31 34 L38 37 L43 45 M31 34 L36 30 L41 34" stroke="#88CE02" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-
-      <text class="item-name" x="66" y="30">GSAP (GreenSock)</text>
-      <text class="font-mono badge-tag" x="66" y="44" fill="#88CE02">120 FPS BUTTER MOTION</text>
-      <text class="font-sans item-desc" x="14" y="74">🎬 ScrollTrigger mastery &amp; timeline wizardry</text>
-      <text class="font-sans item-desc" x="14" y="90">🧈 Buttery smooth physics &amp; micro-interactions</text>
-      <rect x="14" y="100" width="306" height="2" rx="1" fill="#88CE02" opacity="0.25" />
+    <g transform="translate(904, 66)">
+      <rect class="glass-pill" x="0" y="0" width="200" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#14280b" stroke="#88ce0233" />
+      <circle cx="28" cy="22" r="2.8" fill="#88CE02" />
+      <path d="M22 37 L26 29 L32 31 L36 38 M26 29 L30 25 L34 29" stroke="#88CE02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <text class="pill-name" x="54" y="27">GSAP</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#a3e635">120 FPS butter 🧈</text>
     </g>
   </g>
 
-  <!-- CARD 2: DEV GRINDSET TELEMETRY (Metrics & Vibe Check) -->
-  <g transform="translate(784, 140)">
-    <rect class="bento-card" x="0" y="0" width="380" height="340" />
+  <!-- ==================== SECTION 3: BACKEND, RUNTIME & TOOLS ==================== -->
+  <g transform="translate(36, 506)">
+    <!-- Frosted Glass Panel Container -->
+    <rect class="glass-panel" x="0" y="0" width="1128" height="142" />
+    <rect x="20" y="1" width="1088" height="1.5" fill="url(#specular-line)" />
 
-    <!-- Card Header -->
-    <text class="section-title" x="22" y="36">🧠 DEV GRINDSET</text>
-    <text class="font-mono badge-tag" x="175" y="34" fill="#f59e0b">[TELEMETRY]</text>
-    <text class="font-sans section-subtitle" x="22" y="56">Real-time dev aura &amp; cognitive telemetry</text>
+    <!-- Section Header -->
+    <text class="section-heading" x="24" y="32">🛠️ BACKEND, RUNTIME &amp; TOOLS</text>
+    <text class="font-mono badge-tag" x="305" y="30" fill="#22c55e">[WAR ROOM ENGINE]</text>
+    <text class="font-sans section-sub" x="24" y="49">The battle-tested developer weapons &amp; runtime engines that never fold under traffic</text>
 
-    <!-- Stats Matrix -->
-    <g transform="translate(22, 76)">
-      <!-- Row 1: Aura Level -->
-      <g transform="translate(0, 0)">
-        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
-        <text class="stat-label" x="14" y="26">🔥 Aura Level</text>
-        <text class="stat-val" x="322" y="26" fill="#22c55e">+1,000,000</text>
-      </g>
-
-      <!-- Row 2: Fuel Ratio -->
-      <g transform="translate(0, 48)">
-        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
-        <text class="stat-label" x="14" y="26">☕ Fuel Ratio</text>
-        <text class="stat-val" x="322" y="26" fill="#f59e0b">99% Code : 1% Sleep</text>
-      </g>
-
-      <!-- Row 3: Imposter Syndrome -->
-      <g transform="translate(0, 96)">
-        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
-        <text class="stat-label" x="14" y="26">💀 Imposter Syndrome</text>
-        <text class="stat-val font-mono" x="322" y="26" fill="#a855f7">NULL &amp; VOID 🚫</text>
-      </g>
-
-      <!-- Row 4: Ship Velocity -->
-      <g transform="translate(0, 144)">
-        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
-        <text class="stat-label" x="14" y="26">🏎️ Ship Velocity</text>
-        <text class="stat-val" x="322" y="26" fill="#06b6d4">Mach 10 fr fr</text>
-      </g>
-    </g>
-
-    <!-- Bottom Progress Gauge -->
-    <g transform="translate(22, 280)">
-      <text class="font-mono badge-tag" x="0" y="0" fill="#8b949e">VIBE CHECK // PRODUCTION READINESS</text>
-      <text class="font-mono" x="336" y="0" font-size="10" font-weight="700" fill="#22c55e" text-anchor="end">100% (NO CAP)</text>
-      <rect x="0" y="8" width="336" height="12" rx="6" fill="#21262d" />
-      <rect x="0" y="8" width="336" height="12" rx="6" fill="url(#progress-grad)" />
-      <text class="font-sans" x="168" y="36" font-size="11" fill="#7d8590" text-anchor="middle">Certified Clean Code • Tested • Deployed</text>
-    </g>
-  </g>
-
-  <!-- ==================== BENTO ROW 2 ==================== -->
-
-  <!-- CARD 3: LANGUAGES I YAP IN (8 Languages) -->
-  <g transform="translate(36, 500)">
-    <rect class="bento-card" x="0" y="0" width="670" height="326" />
-
-    <!-- Card Header -->
-    <text class="section-title" x="24" y="36">🗣️ LANGUAGES I YAP IN</text>
-    <text class="font-mono badge-tag" x="245" y="34" fill="#a855f7">[MACHINE &amp; COMPILER DIALECTS]</text>
-    <text class="font-sans section-subtitle" x="24" y="56">Talking to compilers with pure audacity and supreme type confidence</text>
-
-    <!-- 8 Languages Matrix (4 Cols x 2 Rows) -->
-    <!-- Col width = 146, Gap = 12. 4*146 + 3*12 = 584 + 36 = 620 -->
-
-    <!-- Row 1: TypeScript, JavaScript, Python, C++ -->
-    <!-- TypeScript -->
-    <g transform="translate(24, 76)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#3178C6" />
-      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">TS</text>
-      <text class="item-name" x="12" y="65">TypeScript</text>
-      <text class="font-sans item-desc" x="12" y="82">Types saved</text>
-      <text class="font-sans item-desc" x="12" y="96">my sanity 🛡️</text>
-    </g>
-
-    <!-- JavaScript -->
-    <g transform="translate(182, 76)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#F7DF1E" />
-      <text class="font-mono" x="29" y="34" fill="#000000" font-size="15" font-weight="800" text-anchor="middle">JS</text>
-      <text class="item-name" x="12" y="65">JavaScript</text>
-      <text class="font-sans item-desc" x="12" y="82">The chaotic</text>
-      <text class="font-sans item-desc" x="12" y="96">web monarch 👑</text>
-    </g>
-
-    <!-- Python -->
-    <g transform="translate(340, 76)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1b2a3a" stroke="#3776AB55" />
-      <!-- Python snake glyph -->
-      <path d="M24 20 C24 16 32 16 32 20 L32 26 L26 26 C22 26 22 30 22 30" stroke="#3776AB" stroke-width="2.2" fill="none" stroke-linecap="round" />
-      <circle cx="27" cy="18" r="1.2" fill="#3776AB" />
-      <path d="M34 38 C34 42 26 42 26 38 L26 32 L32 32 C36 32 36 28 36 28" stroke="#FFD43B" stroke-width="2.2" fill="none" stroke-linecap="round" />
-      <circle cx="31" cy="40" r="1.2" fill="#FFD43B" />
-      <text class="item-name" x="12" y="65">Python</text>
-      <text class="font-sans item-desc" x="12" y="82">Script &amp; data</text>
-      <text class="font-sans item-desc" x="12" y="96">sorcery 🐍</text>
-    </g>
-
-    <!-- C++ -->
-    <g transform="translate(498, 76)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#00599C" />
-      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">C++</text>
-      <text class="item-name" x="12" y="65">C++</text>
-      <text class="font-sans item-desc" x="12" y="82">Raw speed</text>
-      <text class="font-sans item-desc" x="12" y="96">demon 🏎️</text>
-    </g>
-
-    <!-- Row 2: C, SQL, HTML5, CSS3 -->
-    <!-- C -->
-    <g transform="translate(24, 198)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1b2a40" stroke="#659AD244" />
-      <text class="font-mono" x="29" y="34" fill="#659AD2" font-size="16" font-weight="800" text-anchor="middle">C</text>
-      <text class="item-name" x="12" y="65">C</text>
-      <text class="font-sans item-desc" x="12" y="82">Pointer &amp; memory</text>
-      <text class="font-sans item-desc" x="12" y="96">discipline 🧠</text>
-    </g>
-
-    <!-- SQL -->
-    <g transform="translate(182, 198)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0e2a36" stroke="#00758F44" />
-      <!-- Database cylinder -->
-      <ellipse cx="29" cy="22" rx="9" ry="3.5" fill="none" stroke="#00758F" stroke-width="1.8" />
-      <path d="M20 22 L20 34 C20 37 38 37 38 34 L38 22" fill="none" stroke="#00758F" stroke-width="1.8" />
-      <path d="M20 28 C20 31 38 31 38 28" fill="none" stroke="#00758F" stroke-width="1.8" />
-      <text class="item-name" x="12" y="65">SQL</text>
-      <text class="font-sans item-desc" x="12" y="82">Data &amp; query</text>
-      <text class="font-sans item-desc" x="12" y="96">whisperer 💾</text>
-    </g>
-
-    <!-- HTML5 -->
-    <g transform="translate(340, 198)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#E34F26" />
-      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">&lt;/&gt;</text>
-      <text class="item-name" x="12" y="65">HTML5</text>
-      <text class="font-sans item-desc" x="12" y="82">Semantic</text>
-      <text class="font-sans item-desc" x="12" y="96">bedrock 🏗️</text>
-    </g>
-
-    <!-- CSS3 -->
-    <g transform="translate(498, 198)">
-      <rect class="item-pill" x="0" y="0" width="146" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1572B6" />
-      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">{#}</text>
-      <text class="item-name" x="12" y="65">CSS3</text>
-      <text class="font-sans item-desc" x="12" y="82">Visual layout</text>
-      <text class="font-sans item-desc" x="12" y="96">drip 💎</text>
-    </g>
-  </g>
-
-  <!-- CARD 4: THE ENGINE ROOM (Backend & War Room Tools) -->
-  <g transform="translate(724, 500)">
-    <rect class="bento-card" x="0" y="0" width="440" height="326" />
-
-    <!-- Card Header -->
-    <text class="section-title" x="22" y="36">⚙️ THE ENGINE ROOM</text>
-    <text class="font-mono badge-tag" x="215" y="34" fill="#22c55e">[WAR ROOM &amp; TOOLS]</text>
-    <text class="font-sans section-subtitle" x="22" y="56">Battle-tested backend engines &amp; developer daily drivers</text>
-
-    <!-- Items Grid (Row 1: Node.js, Git, GitHub) -->
+    <!-- 5 Glass Tech Pills (Col width: 208px, Gap: 12px) -->
     <!-- 1. Node.js -->
-    <g transform="translate(22, 76)">
-      <rect class="item-pill" x="0" y="0" width="124" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#173117" stroke="#33993355" />
-      <path d="M29 18 L38 23 L38 33 L29 38 L20 33 L20 23 Z" fill="none" stroke="#339933" stroke-width="2" />
-      <circle cx="29" cy="28" r="2.5" fill="#339933" />
-      <text class="item-name" x="12" y="65">Node.js</text>
-      <text class="font-sans item-desc" x="12" y="82">Async event loop</text>
-      <text class="font-sans item-desc" x="12" y="96">grinder 🟢</text>
+    <g transform="translate(24, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#132b13" stroke="#33993344" />
+      <path d="M28 20 L35 24 L35 32 L28 36 L21 32 L21 24 Z" fill="none" stroke="#339933" stroke-width="1.8" />
+      <circle cx="28" cy="28" r="2" fill="#339933" />
+      <text class="pill-name" x="54" y="27">Node.js</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#4ade80">Event loop grinder 🟢</text>
     </g>
 
     <!-- 2. Git -->
-    <g transform="translate(158, 76)">
-      <rect class="item-pill" x="0" y="0" width="124" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#F05033" />
-      <!-- Git branch icon -->
-      <path d="M24 34 L34 24 M24 24 L24 34" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
-      <circle cx="24" cy="24" r="2.5" fill="#ffffff" />
-      <circle cx="24" cy="34" r="2.5" fill="#ffffff" />
-      <circle cx="34" cy="24" r="2.5" fill="#ffffff" />
-      <text class="item-name" x="12" y="65">Git</text>
-      <text class="font-sans item-desc" x="12" y="82">Zero merge</text>
-      <text class="font-sans item-desc" x="12" y="96">panic 🌿</text>
+    <g transform="translate(244, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#F05033" />
+      <path d="M23 35 L32 26 M23 26 L23 35" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+      <circle cx="23" cy="26" r="2.2" fill="#ffffff" />
+      <circle cx="23" cy="35" r="2.2" fill="#ffffff" />
+      <circle cx="32" cy="26" r="2.2" fill="#ffffff" />
+      <text class="pill-name" x="54" y="27">Git</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#f87171">Zero merge panic 🌿</text>
     </g>
 
     <!-- 3. GitHub -->
-    <g transform="translate(294, 76)">
-      <rect class="item-pill" x="0" y="0" width="124" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#161b22" stroke="#ffffff33" />
-      <!-- GitHub Octocat Silhouette -->
-      <path d="M29 18 C23 18 19 22 19 28 C19 33 22 36 26 38 L26 35 C24 35 23 34 22 32 M32 38 C36 36 39 33 39 28 C39 22 35 18 29 18" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" />
-      <circle cx="29" cy="27" r="4" fill="#ffffff" />
-      <text class="item-name" x="12" y="65">GitHub</text>
-      <text class="font-sans item-desc" x="12" y="82">Green square</text>
-      <text class="font-sans item-desc" x="12" y="96">grindset 🟩</text>
+    <g transform="translate(464, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#161b22" stroke="#ffffff33" />
+      <path d="M28 19 C23 19 20 22 20 27 C20 31 22 34 25 35 L25 33 C24 33 23 32 22 31 M31 35 C34 34 36 31 36 27 C36 22 33 19 28 19" stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linecap="round" />
+      <circle cx="28" cy="26" r="3.2" fill="#ffffff" />
+      <text class="pill-name" x="54" y="27">GitHub</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#e2e8f0">Green streak grind 🟩</text>
     </g>
 
-    <!-- Row 2: GitHub Actions & VS Code (Wide Pills) -->
     <!-- 4. GitHub Actions -->
-    <g transform="translate(22, 198)">
-      <rect class="item-pill" x="0" y="0" width="190" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0d2442" stroke="#2088ff55" />
-      <!-- Action Nodes -->
-      <circle cx="22" cy="24" r="3.5" fill="none" stroke="#2088FF" stroke-width="1.8" />
-      <circle cx="36" cy="24" r="3.5" fill="none" stroke="#2088FF" stroke-width="1.8" />
-      <circle cx="29" cy="34" r="3.5" fill="#2088FF" />
-      <path d="M25 25 L27 31 M33 25 L31 31" stroke="#2088FF" stroke-width="1.5" />
-      <text class="item-name" x="54" y="26">GitHub Actions</text>
-      <text class="font-mono badge-tag" x="54" y="38" fill="#2088FF">CI/CD AUTOMATION</text>
-      <text class="font-sans item-desc" x="12" y="72">🤖 Automated pipeline flex</text>
-      <text class="font-sans item-desc" x="12" y="88">🚀 Zero manual deployment friction</text>
-      <text class="font-sans item-desc" x="12" y="102">✅ Green checks all day fr fr</text>
+    <g transform="translate(684, 66)">
+      <rect class="glass-pill" x="0" y="0" width="208" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#0c223d" stroke="#2088ff44" />
+      <circle cx="22" cy="24" r="3" fill="none" stroke="#2088FF" stroke-width="1.6" />
+      <circle cx="34" cy="24" r="3" fill="none" stroke="#2088FF" stroke-width="1.6" />
+      <circle cx="28" cy="33" r="3" fill="#2088FF" />
+      <path d="M24 25 L26 30 M32 25 L30 30" stroke="#2088FF" stroke-width="1.4" />
+      <text class="pill-name" x="54" y="27">GH Actions</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#60a5fa">CI/CD automation 🤖</text>
     </g>
 
     <!-- 5. VS Code -->
-    <g transform="translate(224, 198)">
-      <rect class="item-pill" x="0" y="0" width="194" height="110" />
-      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0c2538" stroke="#007acc55" />
-      <!-- VS Code ribbon -->
-      <path d="M21 26 L30 18 L37 21 L28 29 L37 37 L30 40 L21 32 Z" fill="none" stroke="#007ACC" stroke-width="2" stroke-linejoin="round" />
-      <path d="M28 29 L37 29" stroke="#007ACC" stroke-width="2" />
-      <text class="item-name" x="54" y="26">VS Code</text>
-      <text class="font-mono badge-tag" x="54" y="38" fill="#007ACC">PRIMARY WAR ROOM</text>
-      <text class="font-sans item-desc" x="12" y="72">💻 Configured to perfection</text>
-      <text class="font-sans item-desc" x="12" y="88">⌨️ Keyboard shortcuts locked in</text>
-      <text class="font-sans item-desc" x="12" y="102">⚡ Code output at terminal speed</text>
+    <g transform="translate(904, 66)">
+      <rect class="glass-pill" x="0" y="0" width="200" height="58" />
+      <rect x="10" y="11" width="36" height="36" rx="8" fill="#0a2334" stroke="#007acc44" />
+      <path d="M21 26 L28 20 L34 22 L27 29 L34 35 L28 38 L21 31 Z" fill="none" stroke="#007ACC" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M27 29 L34 29" stroke="#007ACC" stroke-width="1.8" />
+      <text class="pill-name" x="54" y="27">VS Code</text>
+      <text class="font-mono pill-vibe" x="54" y="43" fill="#38bdf8">Sacred war room ⌨️</text>
     </g>
+  </g>
+
+  <!-- ==================== FOOTER TELEMETRY CHIP ==================== -->
+  <g transform="translate(36, 664)">
+    <rect class="glass-pill" x="0" y="0" width="1128" height="42" rx="10" />
+    <text class="font-mono badge-tag" x="24" y="26" fill="#8b949e">AURA TELEMETRY:</text>
+    <text class="font-mono" x="140" y="26" font-size="11" font-weight="700" fill="#22c55e">🔥 Aura +1M</text>
+    <text class="font-mono" x="240" y="26" font-size="11" fill="#484f58">•</text>
+    <text class="font-mono" x="260" y="26" font-size="11" font-weight="700" fill="#f59e0b">☕ 99% Code : 1% Sleep</text>
+    <text class="font-mono" x="430" y="26" font-size="11" fill="#484f58">•</text>
+    <text class="font-mono" x="450" y="26" font-size="11" font-weight="700" fill="#c084fc">💀 Imposter Syndrome: NULL &amp; VOID</text>
+    <text class="font-mono" x="710" y="26" font-size="11" fill="#484f58">•</text>
+    <text class="font-mono" x="730" y="26" font-size="11" font-weight="700" fill="#06b6d4">🏎️ Ship Velocity: Mach 10</text>
+    <text class="font-mono" x="910" y="26" font-size="11" fill="#484f58">•</text>
+    <text class="font-mono" x="930" y="26" font-size="11" font-weight="700" fill="#22c55e">✨ Vibe Check: 100% Passed (No Cap)</text>
   </g>
 
 </svg>
