@@ -1,0 +1,500 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="100%">
+  <defs>
+    <style>
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+      }
+      @keyframes border-shimmer {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: 60; }
+      }
+      @keyframes aura-glow {
+        0%, 100% { opacity: 0.22; }
+        50% { opacity: 0.38; }
+      }
+
+      .canvas-bg { fill: #0a0d14; stroke: #21262d; stroke-width: 1.5; rx: 20px; }
+      .bento-card {
+        fill: #11151f;
+        stroke: #262c36;
+        stroke-width: 1.2;
+        rx: 16px;
+      }
+      .bento-card-highlight {
+        fill: #131926;
+        stroke: #388bfd44;
+        stroke-width: 1.2;
+        rx: 16px;
+      }
+      .item-pill {
+        fill: #161b26;
+        stroke: #262d3d;
+        stroke-width: 1;
+        rx: 12px;
+      }
+      
+      .font-mono {
+        font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+      .font-sans {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+      }
+
+      .title-gradient {
+        font-family: 'JetBrains Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        letter-spacing: -0.5px;
+        fill: url(#header-grad);
+      }
+      .section-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.2px;
+        fill: #f0f6fc;
+      }
+      .section-subtitle {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        fill: #8b949e;
+      }
+      .item-name {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #e6edf3;
+      }
+      .item-desc {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 500;
+        font-size: 10px;
+        fill: #7d8590;
+      }
+      .badge-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        font-size: 9px;
+        letter-spacing: 0.4px;
+      }
+      .stat-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        fill: #c9d1d9;
+      }
+      .stat-val {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 12px;
+        text-anchor: end;
+      }
+      .live-dot {
+        animation: pulse-dot 1.8s ease-in-out infinite;
+      }
+      .glow-pulse {
+        animation: aura-glow 4s ease-in-out infinite;
+      }
+    </style>
+
+    <!-- Gradients -->
+    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="45%" stop-color="#06b6d4" />
+      <stop offset="90%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <linearGradient id="fire-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+
+    <linearGradient id="progress-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <radialGradient id="ambient-top-left" cx="20%" cy="10%" r="50%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="ambient-bottom-right" cx="80%" cy="90%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="ambient-card-glow" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#388bfd" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#388bfd" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Dot Pattern -->
+    <pattern id="dot-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#30363d" opacity="0.38" />
+    </pattern>
+  </defs>
+
+  <!-- Canvas Outer Shell -->
+  <rect class="canvas-bg" x="1" y="1" width="1198" height="858" />
+  <rect class="glow-pulse" x="1" y="1" width="600" height="400" fill="url(#ambient-top-left)" rx="20" />
+  <rect class="glow-pulse" x="600" y="450" width="598" height="408" fill="url(#ambient-bottom-right)" rx="20" />
+  <rect x="2" y="2" width="1196" height="856" fill="url(#dot-grid)" rx="19" pointer-events="none" />
+
+  <!-- ==================== HEADER BAR ==================== -->
+  <g transform="translate(36, 32)">
+    <!-- Pill Badge -->
+    <rect x="0" y="0" width="290" height="24" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <circle class="live-dot" cx="12" cy="12" r="4.5" fill="#22c55e" />
+    <text class="font-mono badge-tag" x="24" y="15.5" fill="#22c55e">NO CAP ARSENAL // TECH STACK v2.0</text>
+
+    <!-- Main Title -->
+    <text class="title-gradient" x="0" y="58">WEAPONS OF MASS CREATION ⚡</text>
+
+    <!-- Subtitle -->
+    <text class="font-sans section-subtitle" x="0" y="80">
+      <tspan fill="#f59e0b" font-weight="600">100% Rizz</tspan> • <tspan fill="#e6edf3">Zero Mid Code</tspan> • Shipped to Production at Mach 10 Speed fr fr
+    </text>
+
+    <!-- Top Right Status Box -->
+    <g transform="translate(860, 2)">
+      <rect x="0" y="0" width="268" height="66" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1" />
+      <circle class="live-dot" cx="18" cy="24" r="5" fill="#22c55e" />
+      <text class="font-mono badge-tag" x="32" y="22" fill="#8b949e">ENGINEERING STATUS</text>
+      <text class="font-mono" x="32" y="38" font-size="12" font-weight="700" fill="#22c55e">24/7 COOKING MODE</text>
+      <text class="font-mono badge-tag" x="18" y="55" fill="#06b6d4">🔒 STATUS: PERPETUALLY LOCKED IN</text>
+    </g>
+  </g>
+
+  <!-- ==================== BENTO ROW 1 ==================== -->
+
+  <!-- CARD 1: THINGS I COOK WITH (Frontend & Creative Stack) -->
+  <g transform="translate(36, 140)">
+    <rect class="bento-card-highlight" x="0" y="0" width="730" height="340" />
+    <rect x="0" y="0" width="730" height="90" fill="url(#ambient-card-glow)" rx="16" />
+
+    <!-- Card Header -->
+    <text class="section-title" x="24" y="36">🍳 THINGS I COOK WITH</text>
+    <text class="font-mono badge-tag" x="225" y="34" fill="#06b6d4" opacity="0.9">[FRONTEND &amp; CREATIVE MOTION]</text>
+    <text class="font-sans section-subtitle" x="24" y="56">Crafting peak UI/UX with smooth 120 FPS butter motion &amp; responsive rizz</text>
+
+    <!-- Items Grid (Row 1: Next.js, React, Vite) -->
+    <!-- 1. Next.js -->
+    <g transform="translate(24, 76)">
+      <rect class="item-pill" x="0" y="0" width="216" height="114" />
+      <rect x="12" y="14" width="40" height="40" rx="10" fill="#000000" stroke="#30363d" />
+      <!-- Next.js N Logo -->
+      <path d="M28 42 L28 26 L42 44 M38 26 L38 36" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="43" cy="27" r="1.5" fill="#06b6d4" />
+
+      <text class="item-name" x="62" y="30">Next.js</text>
+      <text class="font-mono badge-tag" x="62" y="44" fill="#ffffff" opacity="0.6">FULL-STACK ENGINE</text>
+      <text class="font-sans item-desc" x="14" y="74">⚡ Server Actions &amp; App Router</text>
+      <text class="font-sans item-desc" x="14" y="90">🚀 Vercel-grade speed demon</text>
+      <rect x="14" y="100" width="188" height="2" rx="1" fill="#ffffff" opacity="0.15" />
+    </g>
+
+    <!-- 2. React -->
+    <g transform="translate(256, 76)">
+      <rect class="item-pill" x="0" y="0" width="216" height="114" />
+      <rect x="12" y="14" width="40" height="40" rx="10" fill="#0c1d2e" stroke="#00d8ff33" />
+      <!-- React Atom Logo -->
+      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" />
+      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" transform="rotate(60 32 34)" />
+      <ellipse cx="32" cy="34" rx="12" ry="4.5" fill="none" stroke="#00D8FF" stroke-width="1.4" transform="rotate(120 32 34)" />
+      <circle cx="32" cy="34" r="2.2" fill="#00D8FF" />
+
+      <text class="item-name" x="62" y="30">React</text>
+      <text class="font-mono badge-tag" x="62" y="44" fill="#00D8FF">COMPONENT RIZZ</text>
+      <text class="font-sans item-desc" x="14" y="74">🧩 Clean custom hooks &amp; state</text>
+      <text class="font-sans item-desc" x="14" y="90">✨ Seamless reactive architecture</text>
+      <rect x="14" y="100" width="188" height="2" rx="1" fill="#00D8FF" opacity="0.25" />
+    </g>
+
+    <!-- 3. Vite -->
+    <g transform="translate(488, 76)">
+      <rect class="item-pill" x="0" y="0" width="218" height="114" />
+      <rect x="12" y="14" width="40" height="40" rx="10" fill="#1c1630" stroke="#bd34fe33" />
+      <!-- Vite Logo Lightning -->
+      <path d="M22 24 L38 21 L35 34 L43 34 L26 47 L29 36 L22 36 Z" fill="url(#vite-grad)" />
+      <linearGradient id="vite-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#41D1FF" />
+        <stop offset="50%" stop-color="#BD34FE" />
+        <stop offset="100%" stop-color="#FFDD35" />
+      </linearGradient>
+
+      <text class="item-name" x="62" y="30">Vite</text>
+      <text class="font-mono badge-tag" x="62" y="44" fill="#bd34fe">INSTANT HMR</text>
+      <text class="font-sans item-desc" x="14" y="74">⚡ 0.001s instant reloads</text>
+      <text class="font-sans item-desc" x="14" y="90">🔥 No cap bundling speed</text>
+      <rect x="14" y="100" width="190" height="2" rx="1" fill="#bd34fe" opacity="0.25" />
+    </g>
+
+    <!-- Row 2: TailwindCSS & GSAP -->
+    <!-- 4. TailwindCSS -->
+    <g transform="translate(24, 204)">
+      <rect class="item-pill" x="0" y="0" width="332" height="114" />
+      <rect x="14" y="14" width="40" height="40" rx="10" fill="#0a222c" stroke="#14c6b733" />
+      <!-- Tailwind Wave Logo -->
+      <path d="M24 34 C26 29 29 27 34 27 C39 27 40 31 43 32 C46 33 47 32 48 30 C47 35 44 37 39 37 C34 37 33 33 30 32 C27 31 25 32 24 34 Z M18 41 C20 36 23 34 28 34 C33 34 34 38 37 39 C40 40 41 39 42 37 C41 42 38 44 33 44 C28 44 27 40 24 39 C21 38 19 39 18 41 Z" fill="#14C6B7" />
+
+      <text class="item-name" x="66" y="30">TailwindCSS</text>
+      <text class="font-mono badge-tag" x="66" y="44" fill="#14C6B7">LIGHTSPEED STYLING</text>
+      <text class="font-sans item-desc" x="14" y="74">🎨 Pixel-perfect utility flow, zero CSS spaghetti</text>
+      <text class="font-sans item-desc" x="14" y="90">📱 Responsive-first dark glassmorphic layouts</text>
+      <rect x="14" y="100" width="304" height="2" rx="1" fill="#14C6B7" opacity="0.25" />
+    </g>
+
+    <!-- 5. GSAP -->
+    <g transform="translate(372, 204)">
+      <rect class="item-pill" x="0" y="0" width="334" height="114" />
+      <rect x="14" y="14" width="40" height="40" rx="10" fill="#182b0e" stroke="#88ce0233" />
+      <!-- GSAP Green Running Badge / Spark -->
+      <circle cx="34" cy="26" r="3.5" fill="#88CE02" />
+      <path d="M26 44 L31 34 L38 37 L43 45 M31 34 L36 30 L41 34" stroke="#88CE02" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+      <text class="item-name" x="66" y="30">GSAP (GreenSock)</text>
+      <text class="font-mono badge-tag" x="66" y="44" fill="#88CE02">120 FPS BUTTER MOTION</text>
+      <text class="font-sans item-desc" x="14" y="74">🎬 ScrollTrigger mastery &amp; timeline wizardry</text>
+      <text class="font-sans item-desc" x="14" y="90">🧈 Buttery smooth physics &amp; micro-interactions</text>
+      <rect x="14" y="100" width="306" height="2" rx="1" fill="#88CE02" opacity="0.25" />
+    </g>
+  </g>
+
+  <!-- CARD 2: DEV GRINDSET TELEMETRY (Metrics & Vibe Check) -->
+  <g transform="translate(784, 140)">
+    <rect class="bento-card" x="0" y="0" width="380" height="340" />
+
+    <!-- Card Header -->
+    <text class="section-title" x="22" y="36">🧠 DEV GRINDSET</text>
+    <text class="font-mono badge-tag" x="175" y="34" fill="#f59e0b">[TELEMETRY]</text>
+    <text class="font-sans section-subtitle" x="22" y="56">Real-time dev aura &amp; cognitive telemetry</text>
+
+    <!-- Stats Matrix -->
+    <g transform="translate(22, 76)">
+      <!-- Row 1: Aura Level -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
+        <text class="stat-label" x="14" y="26">🔥 Aura Level</text>
+        <text class="stat-val" x="322" y="26" fill="#22c55e">+1,000,000</text>
+      </g>
+
+      <!-- Row 2: Fuel Ratio -->
+      <g transform="translate(0, 48)">
+        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
+        <text class="stat-label" x="14" y="26">☕ Fuel Ratio</text>
+        <text class="stat-val" x="322" y="26" fill="#f59e0b">99% Code : 1% Sleep</text>
+      </g>
+
+      <!-- Row 3: Imposter Syndrome -->
+      <g transform="translate(0, 96)">
+        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
+        <text class="stat-label" x="14" y="26">💀 Imposter Syndrome</text>
+        <text class="stat-val font-mono" x="322" y="26" fill="#a855f7">NULL &amp; VOID 🚫</text>
+      </g>
+
+      <!-- Row 4: Ship Velocity -->
+      <g transform="translate(0, 144)">
+        <rect x="0" y="0" width="336" height="42" rx="8" fill="#161b22" stroke="#262d3d" stroke-width="1" />
+        <text class="stat-label" x="14" y="26">🏎️ Ship Velocity</text>
+        <text class="stat-val" x="322" y="26" fill="#06b6d4">Mach 10 fr fr</text>
+      </g>
+    </g>
+
+    <!-- Bottom Progress Gauge -->
+    <g transform="translate(22, 280)">
+      <text class="font-mono badge-tag" x="0" y="0" fill="#8b949e">VIBE CHECK // PRODUCTION READINESS</text>
+      <text class="font-mono" x="336" y="0" font-size="10" font-weight="700" fill="#22c55e" text-anchor="end">100% (NO CAP)</text>
+      <rect x="0" y="8" width="336" height="12" rx="6" fill="#21262d" />
+      <rect x="0" y="8" width="336" height="12" rx="6" fill="url(#progress-grad)" />
+      <text class="font-sans" x="168" y="36" font-size="11" fill="#7d8590" text-anchor="middle">Certified Clean Code • Tested • Deployed</text>
+    </g>
+  </g>
+
+  <!-- ==================== BENTO ROW 2 ==================== -->
+
+  <!-- CARD 3: LANGUAGES I YAP IN (8 Languages) -->
+  <g transform="translate(36, 500)">
+    <rect class="bento-card" x="0" y="0" width="670" height="326" />
+
+    <!-- Card Header -->
+    <text class="section-title" x="24" y="36">🗣️ LANGUAGES I YAP IN</text>
+    <text class="font-mono badge-tag" x="245" y="34" fill="#a855f7">[MACHINE &amp; COMPILER DIALECTS]</text>
+    <text class="font-sans section-subtitle" x="24" y="56">Talking to compilers with pure audacity and supreme type confidence</text>
+
+    <!-- 8 Languages Matrix (4 Cols x 2 Rows) -->
+    <!-- Col width = 146, Gap = 12. 4*146 + 3*12 = 584 + 36 = 620 -->
+
+    <!-- Row 1: TypeScript, JavaScript, Python, C++ -->
+    <!-- TypeScript -->
+    <g transform="translate(24, 76)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#3178C6" />
+      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="15" font-weight="800" text-anchor="middle">TS</text>
+      <text class="item-name" x="12" y="65">TypeScript</text>
+      <text class="font-sans item-desc" x="12" y="82">Types saved</text>
+      <text class="font-sans item-desc" x="12" y="96">my sanity 🛡️</text>
+    </g>
+
+    <!-- JavaScript -->
+    <g transform="translate(182, 76)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#F7DF1E" />
+      <text class="font-mono" x="29" y="34" fill="#000000" font-size="15" font-weight="800" text-anchor="middle">JS</text>
+      <text class="item-name" x="12" y="65">JavaScript</text>
+      <text class="font-sans item-desc" x="12" y="82">The chaotic</text>
+      <text class="font-sans item-desc" x="12" y="96">web monarch 👑</text>
+    </g>
+
+    <!-- Python -->
+    <g transform="translate(340, 76)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1b2a3a" stroke="#3776AB55" />
+      <!-- Python snake glyph -->
+      <path d="M24 20 C24 16 32 16 32 20 L32 26 L26 26 C22 26 22 30 22 30" stroke="#3776AB" stroke-width="2.2" fill="none" stroke-linecap="round" />
+      <circle cx="27" cy="18" r="1.2" fill="#3776AB" />
+      <path d="M34 38 C34 42 26 42 26 38 L26 32 L32 32 C36 32 36 28 36 28" stroke="#FFD43B" stroke-width="2.2" fill="none" stroke-linecap="round" />
+      <circle cx="31" cy="40" r="1.2" fill="#FFD43B" />
+      <text class="item-name" x="12" y="65">Python</text>
+      <text class="font-sans item-desc" x="12" y="82">Script &amp; data</text>
+      <text class="font-sans item-desc" x="12" y="96">sorcery 🐍</text>
+    </g>
+
+    <!-- C++ -->
+    <g transform="translate(498, 76)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#00599C" />
+      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">C++</text>
+      <text class="item-name" x="12" y="65">C++</text>
+      <text class="font-sans item-desc" x="12" y="82">Raw speed</text>
+      <text class="font-sans item-desc" x="12" y="96">demon 🏎️</text>
+    </g>
+
+    <!-- Row 2: C, SQL, HTML5, CSS3 -->
+    <!-- C -->
+    <g transform="translate(24, 198)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1b2a40" stroke="#659AD244" />
+      <text class="font-mono" x="29" y="34" fill="#659AD2" font-size="16" font-weight="800" text-anchor="middle">C</text>
+      <text class="item-name" x="12" y="65">C</text>
+      <text class="font-sans item-desc" x="12" y="82">Pointer &amp; memory</text>
+      <text class="font-sans item-desc" x="12" y="96">discipline 🧠</text>
+    </g>
+
+    <!-- SQL -->
+    <g transform="translate(182, 198)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0e2a36" stroke="#00758F44" />
+      <!-- Database cylinder -->
+      <ellipse cx="29" cy="22" rx="9" ry="3.5" fill="none" stroke="#00758F" stroke-width="1.8" />
+      <path d="M20 22 L20 34 C20 37 38 37 38 34 L38 22" fill="none" stroke="#00758F" stroke-width="1.8" />
+      <path d="M20 28 C20 31 38 31 38 28" fill="none" stroke="#00758F" stroke-width="1.8" />
+      <text class="item-name" x="12" y="65">SQL</text>
+      <text class="font-sans item-desc" x="12" y="82">Data &amp; query</text>
+      <text class="font-sans item-desc" x="12" y="96">whisperer 💾</text>
+    </g>
+
+    <!-- HTML5 -->
+    <g transform="translate(340, 198)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#E34F26" />
+      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">&lt;/&gt;</text>
+      <text class="item-name" x="12" y="65">HTML5</text>
+      <text class="font-sans item-desc" x="12" y="82">Semantic</text>
+      <text class="font-sans item-desc" x="12" y="96">bedrock 🏗️</text>
+    </g>
+
+    <!-- CSS3 -->
+    <g transform="translate(498, 198)">
+      <rect class="item-pill" x="0" y="0" width="146" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#1572B6" />
+      <text class="font-mono" x="29" y="34" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">{#}</text>
+      <text class="item-name" x="12" y="65">CSS3</text>
+      <text class="font-sans item-desc" x="12" y="82">Visual layout</text>
+      <text class="font-sans item-desc" x="12" y="96">drip 💎</text>
+    </g>
+  </g>
+
+  <!-- CARD 4: THE ENGINE ROOM (Backend & War Room Tools) -->
+  <g transform="translate(724, 500)">
+    <rect class="bento-card" x="0" y="0" width="440" height="326" />
+
+    <!-- Card Header -->
+    <text class="section-title" x="22" y="36">⚙️ THE ENGINE ROOM</text>
+    <text class="font-mono badge-tag" x="215" y="34" fill="#22c55e">[WAR ROOM &amp; TOOLS]</text>
+    <text class="font-sans section-subtitle" x="22" y="56">Battle-tested backend engines &amp; developer daily drivers</text>
+
+    <!-- Items Grid (Row 1: Node.js, Git, GitHub) -->
+    <!-- 1. Node.js -->
+    <g transform="translate(22, 76)">
+      <rect class="item-pill" x="0" y="0" width="124" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#173117" stroke="#33993355" />
+      <path d="M29 18 L38 23 L38 33 L29 38 L20 33 L20 23 Z" fill="none" stroke="#339933" stroke-width="2" />
+      <circle cx="29" cy="28" r="2.5" fill="#339933" />
+      <text class="item-name" x="12" y="65">Node.js</text>
+      <text class="font-sans item-desc" x="12" y="82">Async event loop</text>
+      <text class="font-sans item-desc" x="12" y="96">grinder 🟢</text>
+    </g>
+
+    <!-- 2. Git -->
+    <g transform="translate(158, 76)">
+      <rect class="item-pill" x="0" y="0" width="124" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#F05033" />
+      <!-- Git branch icon -->
+      <path d="M24 34 L34 24 M24 24 L24 34" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+      <circle cx="24" cy="24" r="2.5" fill="#ffffff" />
+      <circle cx="24" cy="34" r="2.5" fill="#ffffff" />
+      <circle cx="34" cy="24" r="2.5" fill="#ffffff" />
+      <text class="item-name" x="12" y="65">Git</text>
+      <text class="font-sans item-desc" x="12" y="82">Zero merge</text>
+      <text class="font-sans item-desc" x="12" y="96">panic 🌿</text>
+    </g>
+
+    <!-- 3. GitHub -->
+    <g transform="translate(294, 76)">
+      <rect class="item-pill" x="0" y="0" width="124" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#161b22" stroke="#ffffff33" />
+      <!-- GitHub Octocat Silhouette -->
+      <path d="M29 18 C23 18 19 22 19 28 C19 33 22 36 26 38 L26 35 C24 35 23 34 22 32 M32 38 C36 36 39 33 39 28 C39 22 35 18 29 18" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" />
+      <circle cx="29" cy="27" r="4" fill="#ffffff" />
+      <text class="item-name" x="12" y="65">GitHub</text>
+      <text class="font-sans item-desc" x="12" y="82">Green square</text>
+      <text class="font-sans item-desc" x="12" y="96">grindset 🟩</text>
+    </g>
+
+    <!-- Row 2: GitHub Actions & VS Code (Wide Pills) -->
+    <!-- 4. GitHub Actions -->
+    <g transform="translate(22, 198)">
+      <rect class="item-pill" x="0" y="0" width="190" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0d2442" stroke="#2088ff55" />
+      <!-- Action Nodes -->
+      <circle cx="22" cy="24" r="3.5" fill="none" stroke="#2088FF" stroke-width="1.8" />
+      <circle cx="36" cy="24" r="3.5" fill="none" stroke="#2088FF" stroke-width="1.8" />
+      <circle cx="29" cy="34" r="3.5" fill="#2088FF" />
+      <path d="M25 25 L27 31 M33 25 L31 31" stroke="#2088FF" stroke-width="1.5" />
+      <text class="item-name" x="54" y="26">GitHub Actions</text>
+      <text class="font-mono badge-tag" x="54" y="38" fill="#2088FF">CI/CD AUTOMATION</text>
+      <text class="font-sans item-desc" x="12" y="72">🤖 Automated pipeline flex</text>
+      <text class="font-sans item-desc" x="12" y="88">🚀 Zero manual deployment friction</text>
+      <text class="font-sans item-desc" x="12" y="102">✅ Green checks all day fr fr</text>
+    </g>
+
+    <!-- 5. VS Code -->
+    <g transform="translate(224, 198)">
+      <rect class="item-pill" x="0" y="0" width="194" height="110" />
+      <rect x="12" y="12" width="34" height="34" rx="8" fill="#0c2538" stroke="#007acc55" />
+      <!-- VS Code ribbon -->
+      <path d="M21 26 L30 18 L37 21 L28 29 L37 37 L30 40 L21 32 Z" fill="none" stroke="#007ACC" stroke-width="2" stroke-linejoin="round" />
+      <path d="M28 29 L37 29" stroke="#007ACC" stroke-width="2" />
+      <text class="item-name" x="54" y="26">VS Code</text>
+      <text class="font-mono badge-tag" x="54" y="38" fill="#007ACC">PRIMARY WAR ROOM</text>
+      <text class="font-sans item-desc" x="12" y="72">💻 Configured to perfection</text>
+      <text class="font-sans item-desc" x="12" y="88">⌨️ Keyboard shortcuts locked in</text>
+      <text class="font-sans item-desc" x="12" y="102">⚡ Code output at terminal speed</text>
+    </g>
+  </g>
+
+</svg>
