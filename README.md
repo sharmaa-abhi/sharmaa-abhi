@@ -67,7 +67,7 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <!-- TECH STACK BENTO MATRIX -->
 <div align="center">
 
-  <img src="./tech-stack.svg" alt="Abhishek's No Cap Tech Arsenal" width="840" />
+  <img src="./tech-stack.svg" alt="Abhishek Sharma's Technical Arsenal - Expertise Matrix" width="840" />
 </div>
 
 <br />
