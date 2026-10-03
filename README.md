@@ -95,16 +95,10 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 
   <br /><br />
 
-  <!-- SIDE-BY-SIDE NEON GLASS BENTO METRICS -->
-  <p align="center">
-    <a href="https://github.com/sharmaa-abhi">
-      <img src="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=07090e&border=22c55e&stroke=22c55e&ring=06b6d4&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=16" width="414" alt="GitHub Streak Activity" />
-    </a>
-    &nbsp;
-    <a href="https://github.com/sharmaa-abhi">
-      <img src="https://github-readme-stats.vercel.app/api?username=sharmaa-abhi&show_icons=true&theme=dark&bg_color=07090e&title_color=22c55e&text_color=c9d1d9&icon_color=06b6d4&border_color=06b6d4&border_radius=16&hide_border=false" width="414" alt="GitHub Stats Summary" />
-    </a>
-  </p>
+  <!-- GitHub Streak Activity Card -->
+  <a href="https://github.com/sharmaa-abhi">
+    <img src="https://streak-stats.demolab.com?user=sharmaa-abhi&theme=dark&background=07090e&border=22c55e&stroke=22c55e&ring=06b6d4&fire=22c55e&currStreakLabel=22c55e&currStreakNum=22c55e&sideNums=ffffff&sideLabels=8b949e&dates=8b949e&border_radius=16" width="840" alt="GitHub Streak Activity" />
+  </a>
 
 </div>
 
