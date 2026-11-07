@@ -1,5 +1,10 @@
 <div align="center">
 
+  <!-- PROFILE BANNER -->
+  <img src="./Beyond%20the%20Walls_%20Abhishek%20Sharma.png" alt="Abhishek Sharma Profile Banner" width="840" />
+
+  <br /><br />
+
   <!-- DYNAMIC TYPING HERO -->
   <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=26&pause=1200&color=22C55E&center=true&vCenter=true&width=650&lines=Hi+👋+I'm+Abhishek+Sharma;Full-Stack+%26+Frontend+Engineer;Building+Next-Gen+Web+Applications" alt="Typing Header" />
 
