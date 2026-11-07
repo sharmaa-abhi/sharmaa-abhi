@@ -87,7 +87,7 @@ sharmaa-abhi@portfolio:~$ cat overview.json
   </p>
 
   <h3>⚡ Proof of Work // The Green Square Grindset 🟩</h3>
-  <p><em>Certified commit demon • Never pushes broken code fr fr • Zero excuses • Daily telemetry</em></p>
+  <p><em>Consistent engineering, thoughtful iterations, and shipping useful software.</em></p>
 
   <br />
 
