@@ -10,6 +10,8 @@
 
   <br />
 
+  <p><em>Beyond the walls. Beyond the limits. Building digital experiences with purpose.</em></p>
+
   <!-- TERMINAL BRAND BANNER -->
   <img src="./terminal.svg" alt="Abhishek Sharma Terminal Banner" width="840" />
 
@@ -37,6 +39,17 @@
 
 <!-- ABOUT & OVERVIEW -->
 ### ⚡ About Me
+
+I’m Abhishek Sharma, a **Frontend & Full-Stack Engineer** who enjoys turning ambitious ideas
+into fast, polished, and useful web experiences. I care about clean architecture, thoughtful
+interfaces, and the small details that make software feel great to use.
+
+### 🧭 Current Mission
+
+- Building scalable web applications with modern frontend and backend patterns
+- Exploring interactive graphics, WebGL, and immersive user experiences
+- Learning advanced distributed systems and performance-focused engineering
+- Creating open-source tools and shipping consistently
 
 ```bash
 sharmaa-abhi@portfolio:~$ cat overview.json
