@@ -6,7 +6,7 @@
   <br /><br />
 
   <!-- DYNAMIC TYPING HERO -->
-  <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=26&pause=1200&color=22C55E&center=true&vCenter=true&width=650&lines=Hi+👋+I'm+Abhishek+Sharma;Full-Stack+%26+Frontend+Engineer;Building+Next-Gen+Web+Applications" alt="Typing Header" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=26&pause=1200&color=22C55E&center=true&vCenter=true&width=720&lines=Hi+👋+I'm+Abhishek+Sharma;Scout+Engineer+%7C+Full-Stack+Builder;Beyond+the+walls%2C+we+ship" alt="Typing Header" />
 
   <br />
 
@@ -18,16 +18,16 @@
   <br /><br />
 
   <p align="center">
-    <strong>🚀 Full-Stack & Frontend Engineer</strong> dedicated to building high-performance web applications,<br />
-    responsive interfaces, and interactive software experiences.
+    <strong>🪽 Scout Engineer & Full-Stack Builder</strong> dedicated to exploring difficult problems,<br />
+    building high-performance web applications, and shipping useful experiences.
   </p>
 
   <p align="center">
     <a href="https://github.com/sharmaa-abhi?tab=repositories">
-      <img src="https://img.shields.io/badge/Focus-Full--Stack%20%26%20Web%20Apps-22c55e?style=for-the-badge&logo=codeforces&logoColor=white" alt="Focus" />
+      <img src="https://img.shields.io/badge/Expedition-Full--Stack%20%26%20Web%20Apps-22c55e?style=for-the-badge&logo=codeforces&logoColor=white" alt="Expedition focus" />
     </a>
     <a href="mailto:sharmaa24434@gmail.com">
-      <img src="https://img.shields.io/badge/Status-Open%20to%20Collaborate-06b6d4?style=for-the-badge&logo=google-chat&logoColor=white" alt="Status" />
+      <img src="https://img.shields.io/badge/Status-Ready%20for%20the%20next%20mission-06b6d4?style=for-the-badge&logo=google-chat&logoColor=white" alt="Mission status" />
     </a>
   </p>
 
@@ -38,27 +38,28 @@
 <br />
 
 <!-- ABOUT & OVERVIEW -->
-### ⚡ About Me
+### 🪽 About Me
 
 I’m Abhishek Sharma, a **Frontend & Full-Stack Engineer** who enjoys turning ambitious ideas
 into fast, polished, and useful web experiences. I care about clean architecture, thoughtful
-interfaces, and the small details that make software feel great to use.
+interfaces, and the small details that make software feel great to use. I build with the
+curiosity of an explorer: map the unknown, learn from every failure, and keep moving forward.
 
-### 🧭 Current Mission
+### 🧭 Current Expedition
 
-- Building scalable web applications with modern frontend and backend patterns
+- Mapping scalable web applications with modern frontend and backend patterns
 - Exploring interactive graphics, WebGL, and immersive user experiences
-- Learning advanced distributed systems and performance-focused engineering
+- Training in advanced distributed systems and performance-focused engineering
 - Creating open-source tools and shipping consistently
 
 ```bash
 sharmaa-abhi@portfolio:~$ cat overview.json
 {
   "name": "Abhishek Sharma",
-  "role": "Frontend & Full-Stack Engineer",
+  "role": "Scout Engineer | Frontend & Full-Stack",
   "interests": ["Scalable Web Architecture", "Interactive Graphics", "Open Source Tools"],
   "currently_learning": ["Advanced Distributed Systems", "High-Performance WebGL"],
-  "motto": "Build fast, iterate with precision, ship with confidence."
+  "motto": "Explore boldly. Build precisely. Keep moving forward."
 }
 ```
 
@@ -69,8 +70,8 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <!-- AUTOMATED CONTRIBUTION SHOWCASE -->
 <div align="center">
 
-  <h3>🎮 Contribution Space Shooter</h3>
-  <p><em>Automated dynamic arcade simulation rendered from live GitHub contribution telemetry.</em></p>
+  <h3>🎮 Expedition Log // Contribution Space Shooter</h3>
+  <p><em>An automated mission log rendered from live GitHub contribution telemetry.</em></p>
 
   <br />
 
@@ -82,7 +83,7 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <hr />
 <br />
 
-<!-- TECH STACK BENTO MATRIX -->
+<!-- TECHNICAL ARSENAL -->
 <div align="center">
 
   <img src="./tech-stack.svg" alt="Abhishek Sharma's Technical Arsenal - Expertise Matrix" width="840" />
@@ -96,11 +97,11 @@ sharmaa-abhi@portfolio:~$ cat overview.json
 <div align="center">
 
   <p>
-    <img src="https://img.shields.io/badge/PROOF%20OF%20WORK-THE%20GREEN%20SQUARE%20GRINDSET%20🟩-22c55e?style=for-the-badge&logo=github&logoColor=white" alt="Proof of Work" />
+    <img src="https://img.shields.io/badge/EXPEDITION%20LOG-THE%20GREEN%20SQUARE%20GRINDSET%20🟩-22c55e?style=for-the-badge&logo=github&logoColor=white" alt="Expedition log" />
   </p>
 
-  <h3>⚡ Proof of Work // The Green Square Grindset 🟩</h3>
-  <p><em>Consistent engineering, thoughtful iterations, and shipping useful software.</em></p>
+  <h3>⚡ Field Report // The Green Square Grindset 🟩</h3>
+  <p><em>Consistent engineering, thoughtful iterations, and useful software shipped beyond the walls.</em></p>
 
   <br />
 
